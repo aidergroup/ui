@@ -1,0 +1,83 @@
+{
+  "name": "@aider/ui",
+  "version": "0.0.2",
+  "author": "Aider <info@aider.nu> (https://aider.nu)",
+  "repository": "https://github.com/aidergroup/ui",
+  "main": "dist/components.js",
+  "module": "dist/components.esm.js",
+  "files": [
+    "dist"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "babelMacros": {
+    "twin": {
+      "config": "./tailwind.config.js",
+      "preset": "styled-components",
+      "includeClassNames": true
+    }
+  },
+  "scripts": {
+    "build:js": "rollup -c",
+    "build": "npm run build:js",
+    "start": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "release": "standard-version",
+    "format": "npx prettier --write .",
+    "lint": "eslint --ext=.js src"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "5.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/eslint-parser": "^7.13.8",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
+    "@storybook/theming": "^6.1.21",
+    "@svgr/rollup": "^5.5.0",
+    "@svgr/webpack": "^5.5.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.3.8",
+    "postcss": "^8.2.7",
+    "postcss-loader": "^4.1.0",
+    "rollup": "^2.38.5",
+    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-svg": "^2.0.0",
+    "standard-version": "^9.1.1"
+  },
+  "browserslist": "> 0.25%, not dead",
+  "dependencies": {
+    "@radix-ui/react-tooltip": "^0.0.9",
+    "chroma-js": "^2.1.1",
+    "classnames": "^2.2.6",
+    "core-js": "^3.8.3",
+    "prop-types": "^15.7.2",
+    "react-minimal-pie-chart": "^8.1.0",
+    "react-select": "^4.2.1",
+    "react-tooltip": "^4.2.15",
+    "react-useportal": "^1.0.13",
+    "tailwindcss": "^2.0.3",
+    "twin.macro": "^2.2.3"
+  }
+}
