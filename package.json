@@ -5,9 +5,6 @@
   "repository": "https://github.com/aidergroup/ui",
   "main": "dist/components.js",
   "module": "dist/components.esm.js",
-  "files": [
-    "dist"
-  ],
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
