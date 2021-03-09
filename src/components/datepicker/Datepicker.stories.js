@@ -6,16 +6,17 @@ const Template = args => {
 	const [endDate, setEndDate] = useState(null)
 
 	const onChange = dates => {
-		// Dates är inte en array om det bara finns ett.
-
-		const [start, end] = dates
-		setStartDate(start)
-		setEndDate(end)
+		if (!dates.length) {
+			setStartDate(dates)
+		} else {
+			const [start, end] = dates
+			setStartDate(start)
+			setEndDate(end)
+		}
 	}
 
 	return (
 		<Datepicker
-			selectsRange={false}
 			onChange={onChange}
 			startDate={startDate}
 			endDate={endDate}
@@ -25,6 +26,11 @@ const Template = args => {
 }
 
 export const Default = Template.bind({})
+
+Default.args = {
+	selectsRange: true,
+	inline: false,
+}
 
 export default {
 	title: 'Components/Datepicker',
