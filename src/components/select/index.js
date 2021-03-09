@@ -57,16 +57,23 @@ const Select = ({
 
   return (
     <div className={className}>
-      {typeof label === 'string' && (
-        <label
-          htmlFor={id}
-          className={`mb-2 block text-sm font-medium ${
-            light ? 'text-white' : 'text-black'
-          }`}
-        >
-          <span className="inline-block">{label}</span>
-        </label>
-      )}
+      <div className="flex items-center justify-between mb-2">
+        {typeof label === 'string' && (
+          <div className="flex items-center">
+            <label
+              htmlFor={id}
+              className={`block text-sm font-medium mr-1 ${
+                light ? 'text-white' : 'text-black'
+              }`}
+            >
+              <span tw="inline-block">{label}</span>
+            </label>
+          </div>
+        )}
+        {typeof error === 'string' && (
+          <span tw="text-red-500 text-sm text-right font-medium">{error}</span>
+        )}
+      </div>
       <ReactSelect
         id={id}
         styles={styles}
@@ -75,11 +82,6 @@ const Select = ({
         isDisabled={disabled}
         {...props}
       />
-      {typeof error === 'string' && (
-        <span className="leading-tight text-red-500 text-xs font-medium">
-          {error}
-        </span>
-      )}
     </div>
   )
 }
