@@ -18,16 +18,16 @@ const Trigger = styled(RadixTrigger)`
   ${tw`outline-none focus:outline-none`}
 `
 const Content = styled(RadixContent)`
-  ${tw`border border-gray-400 shadow-sm rounded-lg p-1 max-w-sm`}
+  ${tw`border bg-white border-gray-400 shadow-sm rounded-lg p-1 max-w-sm`}
 `
 const Label = styled(RadixLabel)`
-  ${tw`text-xs px-2 text-gray-800`}
+  ${tw`text-xs px-2 mt-1 text-gray-800`}
 `
 const Item = styled(RadixItem)`
   ${tw`flex w-full px-2 items-center font-medium px-2 py-1.5 rounded-md outline-none hover:bg-gray-300`}
 `
 const Group = styled(RadixGroup)`
-  ${tw`my-2`}
+  ${tw``}
 `
 const CheckboxItem = styled(RadixCheckboxItem)`
   ${tw`flex w-full px-2 items-center font-medium px-2 py-1.5 rounded-md outline-none hover:bg-gray-300`}
@@ -36,13 +36,13 @@ const ItemIndicator = styled(RadixItemIndicator)`
   ${tw`h-2 w-2 bg-blue-500 mr-1 rounded-full`}
 `
 const RadioGroup = styled(RadixRadioGroup)`
-  ${tw`my-2`}
+  ${tw``}
 `
 const RadioItem = styled(RadixRadioItem)`
   ${tw`flex items-center px-2 py-1.5 font-medium rounded-md outline-none hover:bg-gray-300`}
 `
 const Separator = styled(RadixSeparator)`
-  ${tw`h-px w-11/12 mx-auto bg-gray-400 my-1`}
+  ${tw`h-px flex mx-2 bg-gray-400 my-2`}
 `
 const Arrow = styled(RadixArrow)``
 

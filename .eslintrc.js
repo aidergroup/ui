@@ -34,6 +34,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 1,
     'no-underscore-dangle': 0,
     'react/jsx-fragments': 0,
+    'no-alert': 0,
   },
   // overrides: {
   //   files: 'src/**/*.stories.js',

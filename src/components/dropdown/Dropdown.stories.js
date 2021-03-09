@@ -1,10 +1,11 @@
 import React from 'react'
 import * as Dropdown from '.'
+import Avatar from '../avatar'
 
 const Template = args => (
 	<Dropdown.Root {...args}>
 		<Dropdown.Trigger>
-			<button type="button">Profil</button>
+			<Avatar name="Albin Sven Gunnar Martinsson" />
 		</Dropdown.Trigger>
 		<Dropdown.Content>
 			<Dropdown.Group>
