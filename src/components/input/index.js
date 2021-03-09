@@ -45,7 +45,6 @@ const Input = ({ id, label, tooltip, light, error, className, ...props }) => (
     <input
       id={id}
       className="focus:ring-2 ring-gray-300 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-500 bg-white font-medium px-4 py-2 transition-shadow w-full"
-      error={error}
       {...props}
     />
   </div>
