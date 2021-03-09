@@ -29,7 +29,7 @@ export const Default = Template.bind({})
 
 Default.args = {
 	selectsRange: true,
-	inline: false,
+	inline: true,
 }
 
 export default {

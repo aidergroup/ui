@@ -4,9 +4,11 @@ import ReactDatepicker, { registerLocale } from 'react-datepicker'
 import { format } from 'date-fns'
 import sv from 'date-fns/locale/sv'
 
-import Icon from '../icon'
+import tw, { styled } from 'twin.macro'
 
 import 'react-datepicker/dist/react-datepicker.css'
+
+import Icon from '../icon'
 
 registerLocale('sv', sv)
 
@@ -51,26 +53,90 @@ const Datepicker = ({
   endDate,
   onChange,
 }) => (
-  <ReactDatepicker
-    inline={inline}
-    selectsRange={selectsRange}
-    selected={startDate}
-    onChange={onChange}
-    startDate={startDate}
-    endDate={endDate}
-    locale="sv"
-    weekDayClassName={() => 'font-sans'}
-    dayClassName={() => 'font-sans'}
-    shouldCloseOnSelect={!selectsRange}
-    customInput={
-      <CustomInput
-        selectsRange={selectsRange}
-        startDate={startDate}
-        endDate={endDate}
-      />
-    }
-  />
+  <Wrapper>
+    <ReactDatepicker
+      inline={inline}
+      selectsRange={selectsRange}
+      selected={startDate}
+      onChange={onChange}
+      startDate={startDate}
+      endDate={endDate}
+      locale="sv"
+      shouldCloseOnSelect={!selectsRange}
+      customInput={
+        <CustomInput
+          selectsRange={selectsRange}
+          startDate={startDate}
+          endDate={endDate}
+        />
+      }
+    />
+  </Wrapper>
 )
+
+const Wrapper = styled.div`
+  & .react-datepicker {
+    ${tw`font-sans border border-gray-400`};
+  }
+
+  & .react-datepicker__header {
+    ${tw`bg-gray-300 border-b border-gray-400`};
+  }
+
+  & .react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header {
+    ${tw`font-medium`}
+  }
+
+  & .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    ${tw`text-black outline-none rounded-md`}
+  }
+
+  & .react-datepicker__day:hover,
+  .react-datepicker__month-text:hover,
+  .react-datepicker__quarter-text:hover,
+  .react-datepicker__year-text:hover {
+    ${tw`bg-blue-600 text-white `}
+  }
+
+  & .react-datepicker__day--selected,
+  .react-datepicker__day--in-selecting-range,
+  .react-datepicker__day--in-range,
+  .react-datepicker__month-text--selected,
+  .react-datepicker__month-text--in-selecting-range,
+  .react-datepicker__month-text--in-range,
+  .react-datepicker__quarter-text--selected,
+  .react-datepicker__quarter-text--in-selecting-range,
+  .react-datepicker__quarter-text--in-range,
+  .react-datepicker__year-text--selected,
+  .react-datepicker__year-text--in-selecting-range,
+  .react-datepicker__year-text--in-range {
+    ${tw`bg-blue-500 text-white`}
+  }
+
+  & .react-datepicker__month--selected,
+  .react-datepicker__month--in-selecting-range,
+  .react-datepicker__month--in-range,
+  .react-datepicker__quarter--selected,
+  .react-datepicker__quarter--in-selecting-range,
+  .react-datepicker__quarter--in-range {
+    ${tw`bg-blue-600 text-white`};
+  }
+
+  & .react-datepicker__day--keyboard-selected,
+  .react-datepicker__month-text--keyboard-selected,
+  .react-datepicker__quarter-text--keyboard-selected,
+  .react-datepicker__year-text--keyboard-selected {
+    ${tw`bg-blue-600 text-white`}
+  }
+
+  & .react-datepicker__navigation {
+    ${tw`outline-none`}
+  }
+`
 
 Datepicker.propTypes = {
   inline: PropTypes.bool,
