@@ -5,7 +5,7 @@ import * as Tooltip from '@radix-ui/react-tooltip'
 
 const Input = ({ id, label, tooltip, light, error, className, ...props }) => (
   <div className={className}>
-    <div className="flex items-center justify-between mb-2 ">
+    <div className="flex items-center justify-between mb-2">
       {typeof label === 'string' && (
         <div className="flex items-center">
           <label
@@ -37,9 +37,9 @@ const Input = ({ id, label, tooltip, light, error, className, ...props }) => (
         </div>
       )}
       {typeof error === 'string' && (
-        <StyledError className="text-red-500 text-sm text-right font-medium">
+        <span className="text-red-500 text-sm text-right font-medium">
           {error}
-        </StyledError>
+        </span>
       )}
     </div>
     <input
@@ -57,10 +57,6 @@ const fadeIn = keyframes`
 `
 
 const StyledContent = styled(Tooltip.Content)`
-  animation: ${fadeIn} 0.25s;
-`
-
-const StyledError = styled.div`
   animation: ${fadeIn} 0.25s;
 `
 
