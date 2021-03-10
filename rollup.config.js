@@ -1,4 +1,5 @@
 import pkg from './package.json'
+import css from 'rollup-plugin-import-css'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import { babel } from '@rollup/plugin-babel'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
@@ -7,7 +8,7 @@ import svgr from '@svgr/rollup'
 import commonjs from '@rollup/plugin-commonjs'
 import filesize from 'rollup-plugin-filesize'
 
-const extensions = ['js']
+const extensions = ['.js', '.ts']
 
 export default {
   input: 'src/index.js',
@@ -21,17 +22,23 @@ export default {
     peerDepsExternal(),
     // External modules not to include in your bundle (eg: 'lodash', 'moment' etc.)
     // https://rollupjs.org/guide/en/#external
-    // external: []
+    //
     nodeResolve({ extensions }),
+    css(),
     svg(),
     svgr(),
     babel({
       extensions,
+      babelHelpers: 'runtime',
       include: ['src/**/*'],
       exclude: 'node_modules/**',
-      plugins: ['transform-class-properties'],
+      plugins: [
+        'transform-class-properties',
+        '@babel/plugin-transform-runtime',
+      ],
     }),
     commonjs(),
     filesize(),
   ],
+  external: [/@babel\/runtime/],
 }
