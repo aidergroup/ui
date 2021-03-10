@@ -29,7 +29,7 @@ export default {
     svgr(),
     babel({
       extensions,
-      babelHelpers: 'runtime',
+      babelHelpers: 'bundled',
       include: ['src/**/*'],
       exclude: 'node_modules/**',
       plugins: ['transform-class-properties'],
