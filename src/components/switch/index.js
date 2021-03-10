@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import * as RadixSwitch from '@radix-ui/react-switch'
-import styled from 'styled-components'
+import tw, { styled } from 'twin.macro'
 
 const Switch = ({
   checked,
@@ -30,39 +30,15 @@ const Switch = ({
 )
 
 const Root = styled(RadixSwitch.Root)`
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  width: 25px;
-  height: 15px;
-  background-color: orange;
-  position: relative;
-  border-radius: 25px;
-
-  &:focus {
-    outline: none;
-    boxshadow: 0 0 0 2px blue;
-  }
-
+  ${tw`appearance-none bg-transparent border-none p-0 w-10 transition-colors duration-300 h-5 bg-gray-500 relative rounded-full`}
   &[data-state='checked'] {
-    background-color: red;
+    ${tw`bg-blue-500`}
   }
 `
-
 const Thumb = styled(RadixSwitch.Thumb)`
-  display: block;
-  width: 13px;
-  height: 13px;
-  background-color: white;
-  border-radius: 100px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 2px;
-  transition: transform 100ms;
-  transform: translateX(1px);
-  will-change: transform;
-
+  ${tw`block w-5 h-5 bg-white rounded-full shadow-sm border border-gray-400 transition-transform duration-300 transform translate-x-0`}
   &[data-state='checked'] {
-    transform: translateX(11px);
+    ${tw`translate-x-full`}
   }
 `
 
