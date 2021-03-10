@@ -32,13 +32,9 @@ export default {
       babelHelpers: 'runtime',
       include: ['src/**/*'],
       exclude: 'node_modules/**',
-      plugins: [
-        'transform-class-properties',
-        '@babel/plugin-transform-runtime',
-      ],
+      plugins: ['transform-class-properties'],
     }),
     commonjs(),
     filesize(),
   ],
-  external: [/@babel\/runtime/],
 }
