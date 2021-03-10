@@ -53,7 +53,7 @@ const Datepicker = ({
   endDate,
   onChange,
 }) => (
-  <Wrapper>
+  <Wrapper inline={inline}>
     <ReactDatepicker
       inline={inline}
       selectsRange={selectsRange}
@@ -76,7 +76,8 @@ const Datepicker = ({
 
 const Wrapper = styled.div`
   & .react-datepicker {
-    ${tw`font-sans border border-gray-400`};
+    ${props => (props.inline ? tw`border-none` : tw`border border-gray-400`)}
+    ${tw`font-sans border`}
   }
 
   & .react-datepicker__header {

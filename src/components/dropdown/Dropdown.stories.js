@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as Dropdown from '.'
 import Avatar from '../avatar'
+import Datepicker from '../datepicker'
 
 const Template = args => (
 	<Dropdown.Root {...args}>
@@ -56,6 +57,40 @@ const RadioTemplate = args => (
 )
 
 export const Radio = RadioTemplate.bind({})
+
+const DatepickerTemplate = args => {
+	const [startDate, setStartDate] = useState(new Date())
+	const [endDate, setEndDate] = useState(null)
+
+	const onChange = dates => {
+		if (!dates.length) {
+			setStartDate(dates)
+		} else {
+			const [start, end] = dates
+			setStartDate(start)
+			setEndDate(end)
+		}
+	}
+
+	return (
+		<Dropdown.Root {...args}>
+			<Dropdown.Trigger>
+				<button type="button">Välj datum</button>
+			</Dropdown.Trigger>
+			<Dropdown.Content>
+				<Datepicker
+					inline
+					onChange={onChange}
+					startDate={startDate}
+					endDate={endDate}
+					{...args}
+				/>
+			</Dropdown.Content>
+		</Dropdown.Root>
+	)
+}
+
+export const WithDatepicker = DatepickerTemplate.bind({})
 
 Default.args = {}
 
