@@ -13,15 +13,20 @@ const getInitials = str => {
   return initials
 }
 
-const Avatar = ({ name, ...props }) => (
-  <button
-    {...props}
-    type="button"
-    className="bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 active:ring-2 ring-blue-400 focus:outline-none  text-sm text-white font-semibold h-10 w-10 flex items-center justify-center rounded-lg transition duration-200"
-  >
-    {getInitials(name)}
-  </button>
-)
+const Avatar = React.forwardRef((props, ref) => {
+  const { name, ...rest } = props
+
+  return (
+    <button
+      {...rest}
+      ref={ref}
+      type="button"
+      className="bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 active:ring-2 ring-blue-400 focus:outline-none  text-sm text-white font-semibold h-10 w-10 flex items-center justify-center rounded-lg transition duration-200"
+    >
+      {getInitials(name)}
+    </button>
+  )
+})
 
 Avatar.propTypes = {
   name: PropTypes.string,

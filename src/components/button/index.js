@@ -12,15 +12,9 @@ const VARIANTS = {
     'text-white bg-red-500 hover:bg-red-600 focus:bg-red-600 active:ring-2 ring-red-400',
 }
 
-const Button = ({
-  title,
-  className,
-  type,
-  block,
-  variant,
-  isLoading,
-  ...props
-}) => {
+const Button = React.forwardRef((props, ref) => {
+  const { title, className, type, block, variant, isLoading, ...rest } = props
+
   const classes = classNames(
     'border border-transparent relative focus:outline-none rounded-full disabled:bg-gray-400 disabled:text-gray-700 disabled:cursor-not-allowed outline-none px-5 py-2 font-medium transition duration-300',
     className,
@@ -29,11 +23,11 @@ const Button = ({
 
   return (
     // eslint-disable-next-line react/button-has-type
-    <button {...props} type={type} className={classes}>
+    <button {...rest} ref={ref} type={type} className={classes}>
       <span className={isLoading ? 'animate-pulse' : undefined}>{title}</span>
     </button>
   )
-}
+})
 
 Button.propTypes = {
   title: PropTypes.string,
