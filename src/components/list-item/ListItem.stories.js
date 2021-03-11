@@ -3,7 +3,13 @@ import ListItem from '.'
 
 import Button from '../button'
 
-const Template = args => <ListItem {...args} />
+const Template = args => (
+	<ol>
+		<ListItem {...args} />
+		<ListItem {...args} />
+		<ListItem {...args} />
+	</ol>
+)
 
 export const Horizontal = Template.bind({})
 
