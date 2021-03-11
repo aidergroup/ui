@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import tw, { styled } from 'twin.macro'
 
 const VARIANTS = {
-  horizontal: 'flex w-full justify-between py-4 space-x-3',
-  vertical: 'flex flex-col py-3',
+  horizontal: 'flex w-full justify-between py-4 space-x-3 list-none',
+  vertical: 'flex w-full flex-col py-3 list-none',
 }
 
 const ListItem = ({
@@ -16,16 +15,12 @@ const ListItem = ({
   const classes = (variant && VARIANTS[variant]) || null
 
   return (
-    <Container border={border} className={classes}>
+    <li className={`${classes} ${border && 'border-b border-gray-400'}`}>
       <div className="font-medium">{title}</div>
       <div>{children}</div>
-    </Container>
+    </li>
   )
 }
-
-const Container = styled.li`
-  ${props => props.border && tw`border-b border-gray-400`}
-`
 
 ListItem.propTypes = {
   title: PropTypes.string.isRequired,
