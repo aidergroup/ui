@@ -1,6 +1,6 @@
 import {
   Root,
-  Trigger as RadixTrigger,
+  Trigger,
   Content as RadixContent,
   Label as RadixLabel,
   Item as RadixItem,
@@ -14,9 +14,6 @@ import {
 } from '@radix-ui/react-dropdown-menu'
 import tw, { styled } from 'twin.macro'
 
-const Trigger = styled(RadixTrigger)`
-  ${tw`outline-none focus:outline-none`}
-`
 const Content = styled(RadixContent)`
   ${tw`border bg-white border-gray-400 shadow-sm rounded-lg p-1 max-w-sm`}
 `
