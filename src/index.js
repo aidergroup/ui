@@ -14,6 +14,7 @@ export { default as Avatar } from './components/avatar'
 export { default as Switch } from './components/switch'
 export { default as Checkbox } from './components/checkbox'
 export { default as Datepicker } from './components/datepicker'
+export { default as ListItem } from './components/list-item'
 export * as Dropdown from './components/dropdown'
 
 // Hooks
