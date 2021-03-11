@@ -6,12 +6,7 @@ const VARIANTS = {
   vertical: 'flex w-full flex-col py-3 list-none',
 }
 
-const ListItem = ({
-  variant = 'horizontal',
-  children,
-  title,
-  border = true,
-}) => {
+const ListItem = ({ variant, children, title, border }) => {
   const classes = (variant && VARIANTS[variant]) || null
 
   return (
@@ -33,7 +28,7 @@ ListItem.propTypes = {
 }
 
 ListItem.defaultProps = {
-  variant: 'primary',
+  variant: 'horizontal',
   border: false,
 }
 
