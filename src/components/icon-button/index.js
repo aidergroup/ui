@@ -32,6 +32,7 @@ const IconButton = ({
 
 IconButton.propTypes = {
   icon: PropTypes.element,
+  type: PropTypes.string,
   className: PropTypes.string,
   variant: PropTypes.oneOf(Object.keys(VARIANTS)),
   isLoading: PropTypes.bool,
@@ -39,6 +40,7 @@ IconButton.propTypes = {
 
 IconButton.defaultProps = {
   icon: '',
+  type: 'button',
   className: '',
   variant: 'primary',
   isLoading: false,
