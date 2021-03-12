@@ -2,10 +2,10 @@ import React from 'react'
 import PieChart, { colorData } from '.'
 
 const data = [
-  { name: 'Övriga utgifter', value: 1600 },
-  { name: 'Arvode och sociala avgifter', value: 600 },
-  { name: 'Försäkringar', value: 460 },
-  { name: 'Hyra och omvårdnad', value: 680 },
+  { title: 'Övriga utgifter', value: 1600 },
+  { title: 'Arvode och sociala avgifter', value: 600 },
+  { title: 'Försäkringar', value: 460 },
+  { title: 'Hyra och omvårdnad', value: 680 },
 ]
 const colorFrom = '#009AC8'
 const colorTo = '#093442'
@@ -22,7 +22,7 @@ export const Default = Template.bind({})
 
 Default.args = {
   data: coloredData,
-  renderTooltipContent: ({ name, value }) => `${name} - ${value} kr`,
+  renderTooltipContent: ({ title, value }) => `${title} - ${value} kr`,
   children: <span className="font-medium">-{total} SEK</span>,
 }
 

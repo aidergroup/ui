@@ -55,8 +55,8 @@ const PieChart = ({ data, renderTooltipContent, children }) => {
 PieChart.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      sum: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
       color: PropTypes.string.isRequired,
     }),
   ).isRequired,
