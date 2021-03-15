@@ -52,12 +52,13 @@ const Datepicker = ({
   startDate,
   endDate,
   onChange,
+  selected,
 }) => (
   <Wrapper inline={inline}>
     <ReactDatepicker
       inline={inline}
       selectsRange={selectsRange}
-      selected={startDate}
+      selected={selected}
       onChange={onChange}
       startDate={startDate}
       endDate={endDate}
@@ -144,12 +145,14 @@ Datepicker.propTypes = {
   selectsRange: PropTypes.bool,
   startDate: PropTypes.instanceOf(Date).isRequired,
   endDate: PropTypes.instanceOf(Date),
+  selected: PropTypes.instanceOf(Date),
 }
 
 Datepicker.defaultProps = {
   inline: false,
   selectsRange: false,
   endDate: null,
+  selected: null,
 }
 
 export default Datepicker
