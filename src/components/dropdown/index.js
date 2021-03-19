@@ -21,7 +21,7 @@ const Label = styled(RadixLabel)`
   ${tw`text-xs px-2 mt-1 text-gray-800`}
 `
 const Item = styled(RadixItem)`
-  ${tw`flex w-full px-2 items-center font-medium px-2 py-1.5 rounded-md outline-none hover:bg-gray-300`}
+  ${tw`flex w-full items-center font-medium px-2 py-1.5 rounded-md outline-none hover:bg-gray-300`}
 `
 const Group = styled(RadixGroup)`
   ${tw``}

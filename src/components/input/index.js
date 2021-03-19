@@ -6,7 +6,7 @@ import * as Tooltip from '@radix-ui/react-tooltip'
 const Input = ({ id, label, tooltip, light, error, className, ...props }) => (
   <div className={className}>
     <div className="flex items-center justify-between mb-2">
-      {typeof label === 'string' && (
+      {label && (
         <div className="flex items-center">
           <label
             htmlFor={id}
@@ -16,7 +16,7 @@ const Input = ({ id, label, tooltip, light, error, className, ...props }) => (
           >
             <span className="inline-block">{label}</span>
           </label>
-          {typeof tooltip === 'string' && (
+          {tooltip && (
             <Tooltip.Root>
               <Tooltip.Trigger className="focus:outline-none focus:ring-2 hover:ring-1 ring-gray-600 transition-shadow h-4 w-4 rounded flex items-center justify-center bg-gray-400">
                 <span className="text-gray-800 text-xs font-medium">?</span>
@@ -44,7 +44,7 @@ const Input = ({ id, label, tooltip, light, error, className, ...props }) => (
     </div>
     <input
       id={id}
-      className="focus:ring-2 ring-gray-300 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-500 bg-white font-medium px-4 py-2 transition-shadow w-full"
+      className="focus:ring-2 ring-blue-500 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-500 bg-white font-medium px-4 py-2 transition-shadow w-full"
       {...props}
     />
   </div>

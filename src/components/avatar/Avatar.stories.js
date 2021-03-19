@@ -7,6 +7,7 @@ export const Default = Template.bind({})
 
 Default.args = {
 	name: 'Albin Sven Gunnar Martinsson',
+	isLoading: false,
 }
 
 export default {
