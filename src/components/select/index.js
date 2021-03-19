@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react'
-import ReactSelect from 'react-select'
+import ReactSelect, { components } from 'react-select'
 import PropTypes from 'prop-types'
 import tw from 'twin.macro'
+import Icon from '../icon'
 
 /**
  * @param {Object} provided -- the component's default styles
@@ -10,25 +11,36 @@ import tw from 'twin.macro'
  */
 const styles = {
   control: (provided, state) => {
-    const classes = tw`duration-300 outline-none placeholder-gray-700 transition-shadow rounded-md border shadow-none border-gray-500 bg-white font-medium hover:border hover:border-gray-400 active:border active:border-gray-400`
-    const shadow = 'box-shadow: 0 0 0 2px #009ac8'
+    const classes = tw`duration-300 outline-none placeholder-gray-700 transition-shadow rounded-md border shadow-none border-gray-500 bg-white font-medium hover:border hover:border-gray-400 active:border ring-blue-500`
+    const shadow = tw`shadow-sm`
     return state.isFocused
       ? { ...provided, ...classes, ...shadow }
       : { ...provided, ...classes }
   },
   option: (_, state) => {
-    const defaultClasses = tw`text-sm font-medium transition-colors duration-200 text-black hover:bg-gray-300 focus:bg-gray-400 active:bg-gray-400`
-    const selectedClasses = tw`text-sm font-medium transition-colors duration-200 text-black focus:bg-gray-400 active:bg-gray-400 bg-gray-500`
+    const defaultClasses = tw`rounded-lg px-2 py-1.5 rounded-md outline-none text-base font-medium transition-colors duration-200 text-black hover:bg-gray-300 focus:bg-gray-400 active:bg-gray-400`
+    const selectedClasses = tw`rounded-lg px-2 py-1.5 rounded-md outline-none text-base font-medium transition-colors duration-200 text-black focus:bg-gray-400 active:bg-gray-400 bg-gray-500`
     return state.isSelected ? selectedClasses : defaultClasses
   },
   valueContainer: provided => {
     const classes = tw`px-4 py-1`
     return { ...provided, ...classes }
   },
-  menu: () => tw`border border-gray-400 shadow-lg rounded`,
-  placeholder: () => tw`text-sm font-medium text-gray-800`,
-  singleValue: () => tw`text-sm font-medium text-black`,
+  menu: () =>
+    tw`border bg-white border-gray-400 shadow-sm rounded-lg p-1 absolute top-0 w-full mt-12 z-20`,
+  placeholder: () => tw`text-base font-medium text-gray-800`,
+  singleValue: () => tw`text-base font-medium text-black`,
 }
+
+const DropdownIndicator = props => (
+  <components.DropdownIndicator {...props}>
+    <div className="px-2">
+      <Icon className="h-3 w-3" name="chevron-down" />
+    </div>
+  </components.DropdownIndicator>
+)
+
+const IndicatorSeparator = () => null
 
 const Select = ({
   id,
@@ -80,6 +92,7 @@ const Select = ({
         onChange={_onChange}
         name={name}
         isDisabled={disabled}
+        components={{ DropdownIndicator, IndicatorSeparator }}
         {...props}
       />
     </div>

@@ -30,7 +30,7 @@ const Switch = ({
 )
 
 const Root = styled(RadixSwitch.Root)`
-  ${tw`appearance-none bg-transparent border-none p-0 w-10 transition-colors duration-300 h-5 bg-gray-500 relative rounded-full`}
+  ${tw`appearance-none bg-transparent focus:outline-none border-none p-0 w-10 transition-colors duration-300 h-5 bg-gray-500 relative rounded-full`}
   &[data-state='checked'] {
     ${tw`bg-blue-500`}
   }
