@@ -3,6 +3,7 @@ export * as tailwindConfig from '../tailwind.config.js'
 
 // Components
 export { default as Button } from './components/button'
+export { default as FilterButton } from './components/filter-button'
 export { default as Icon } from './components/icon'
 export { default as IconButton } from './components/icon-button'
 export { default as Input } from './components/input'
