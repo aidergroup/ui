@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { keyframes } from 'styled-components'
-import * as Tooltip from '@radix-ui/react-tooltip'
+import * as Tooltip from '../tooltip'
 
 const Input = ({ id, label, tooltip, light, error, className, ...props }) => (
   <div className={className}>
@@ -18,20 +17,15 @@ const Input = ({ id, label, tooltip, light, error, className, ...props }) => (
           </label>
           {tooltip && (
             <Tooltip.Root>
-              <Tooltip.Trigger className="focus:outline-none focus:ring-2 hover:ring-1 ring-gray-600 transition-shadow h-4 w-4 rounded flex items-center justify-center bg-gray-400">
-                <span className="text-gray-800 text-xs font-medium">?</span>
+              <Tooltip.Trigger>
+                <div className="focus:outline-none focus:ring-2 hover:ring-1 ring-gray-600 transition-shadow h-4 w-4 rounded flex items-center justify-center bg-gray-400">
+                  <span className="text-gray-800 text-xs font-medium">?</span>
+                </div>
               </Tooltip.Trigger>
-              <StyledContent
-                sideOffset={6}
-                side="right"
-                className="px-2 py-1 items-center flex bg-gray-400 rounded-md"
-              >
+              <Tooltip.Content sideOffset={6} side="right">
                 <div className="text-sm text-gray-800">{tooltip}</div>
-                <Tooltip.Arrow
-                  offset={0}
-                  className="fill-current text-gray-400"
-                />
-              </StyledContent>
+                <Tooltip.Arrow offset={0} />
+              </Tooltip.Content>
             </Tooltip.Root>
           )}
         </div>
@@ -49,15 +43,6 @@ const Input = ({ id, label, tooltip, light, error, className, ...props }) => (
     />
   </div>
 )
-
-const fadeIn = keyframes`
-  0% { opacity: 0 },
-  100% { opacity: 1},
-`
-
-const StyledContent = styled(Tooltip.Content)`
-  animation: ${fadeIn} 0.25s;
-`
 
 Input.propTypes = {
   id: PropTypes.string.isRequired,
