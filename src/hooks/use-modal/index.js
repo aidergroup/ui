@@ -48,8 +48,8 @@ const useModal = ({ onOpen, onClose, ...config } = {}) => {
 }
 
 const Container = styled.div`
-  ${tw`flex flex-col bg-white shadow-md rounded-md overflow-hidden`}
-  width: 640px;
+  ${tw`flex flex-col bg-white shadow-lg rounded-xl overflow-hidden`}
+  max-width: 640px;
   max-height: 800px;
 `
 
