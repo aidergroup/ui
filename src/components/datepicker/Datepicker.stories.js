@@ -28,7 +28,16 @@ const Template = args => {
 export const Default = Template.bind({})
 
 Default.args = {
+	showMonthYearPicker: false,
 	selectsRange: true,
+	inline: true,
+}
+
+export const MonthPicker = Template.bind({})
+
+MonthPicker.args = {
+	showMonthYearPicker: true,
+	selectsRange: false,
 	inline: true,
 }
 

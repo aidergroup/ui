@@ -28,7 +28,6 @@ const CustomInput = forwardRef(
             <span className="text-gray-800">Välj datum</span>
           )}
         </div>
-
         {selectsRange && (
           <Fragment>
             <Icon className="h-2 w-2" name="chevron-right" />
@@ -53,9 +52,11 @@ const Datepicker = ({
   endDate,
   onChange,
   selected,
+  ...props
 }) => (
   <Wrapper inline={inline}>
     <ReactDatepicker
+      {...props}
       inline={inline}
       selectsRange={selectsRange}
       selected={selected}
@@ -88,7 +89,7 @@ const Wrapper = styled.div`
   & .react-datepicker__current-month,
   .react-datepicker-time__header,
   .react-datepicker-year-header {
-    ${tw`font-medium`}
+    ${tw`font-medium pb-1`}
   }
 
   & .react-datepicker__day-name,
