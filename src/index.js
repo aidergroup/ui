@@ -16,6 +16,7 @@ export { default as Checkbox } from './components/checkbox'
 export { default as Datepicker } from './components/datepicker'
 export { default as ListItem } from './components/list-item'
 export * as Dropdown from './components/dropdown'
+export * as Tooltip from './components/tooltip'
 
 // Hooks
 export { default as useModal } from './hooks/use-modal'
