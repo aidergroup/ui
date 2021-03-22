@@ -16,7 +16,7 @@ const CustomInput = forwardRef(
   ({ selectsRange, startDate, endDate, onClick }, ref) => (
     <button
       type="button"
-      className="focus:ring-2 ring-gray-300 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-500 bg-white font-medium px-4 py-2 transition-shadow"
+      className="focus:ring-2 w-full block ring-blue-500 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-500 bg-white font-medium px-4 py-2 transition-shadow"
       onClick={onClick}
       ref={ref}
     >
@@ -79,7 +79,11 @@ const Datepicker = ({
 const Wrapper = styled.div`
   & .react-datepicker {
     ${props => (props.inline ? tw`border-none` : tw`border border-gray-400`)}
-    ${tw`font-sans border`}
+    ${tw`font-sans border w-full`}
+  }
+
+  & .react-datepicker-wrapper {
+    ${tw`w-full`}
   }
 
   & .react-datepicker__header {

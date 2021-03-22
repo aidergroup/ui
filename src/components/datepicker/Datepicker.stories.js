@@ -16,12 +16,15 @@ const Template = args => {
 	}
 
 	return (
-		<Datepicker
-			onChange={onChange}
-			startDate={startDate}
-			endDate={endDate}
-			{...args}
-		/>
+		<div className="w-full">
+			<Datepicker
+				onChange={onChange}
+				startDate={startDate}
+				endDate={endDate}
+				showPopperArrow={false}
+				{...args}
+			/>
+		</div>
 	)
 }
 
