@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
 import styled from 'styled-components'
+import tw from 'twin.macro'
 
 const Checkbox = ({
   checked,
@@ -30,28 +31,11 @@ const Checkbox = ({
 )
 
 const Root = styled(RadixCheckbox.Root)`
-  appearance: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  box-shadow: inset 0 0 0 1px black;
-  width: 15px;
-  height: 15px;
-  border-radius: 2px;
-
-  &:focus {
-    outline: none;
-    boxshadow: inset 0 0 0 1px blue, 0 0 0 1px blue;
-  }
+  ${tw`appearance-none flex items-center justify-center bg-transparent border border-gray-600 w-6 h-6 hover:bg-gray-300 transition ring-blue-500 hover:ring-2 focus:ring-2 rounded-md focus:outline-none`}
 `
 
 const Indicator = styled(RadixCheckbox.Indicator)`
-  width: 12px;
-  height: 12px;
-  background-color: blue;
+  ${tw`h-4 w-4 bg-blue-500 rounded shadow-sm`}
 `
 
 Checkbox.propTypes = {
