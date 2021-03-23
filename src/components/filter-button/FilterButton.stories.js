@@ -6,10 +6,10 @@ const Template = args => <FilterButton {...args} />
 export const Default = Template.bind({})
 
 Default.args = {
-	title: 'Title',
+  title: 'Title',
 }
 
 export default {
-	title: 'Components/FilterButton',
-	component: FilterButton,
+  title: 'Components/FilterButton',
+  component: FilterButton,
 }
