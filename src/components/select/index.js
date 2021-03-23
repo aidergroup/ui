@@ -23,13 +23,14 @@ const styles = {
     return state.isSelected ? selectedClasses : defaultClasses
   },
   valueContainer: provided => {
-    const classes = tw`px-4 py-1`
+    const classes = tw`px-4 py-1 whitespace-nowrap truncate flex-nowrap`
     return { ...provided, ...classes }
   },
   menu: () =>
     tw`border bg-white border-gray-400 shadow-sm rounded-lg p-1 absolute top-0 w-full mt-12 z-20`,
   placeholder: () => tw`text-base font-medium text-gray-800`,
-  singleValue: () => tw`text-base font-medium text-black`,
+  singleValue: () =>
+    tw`text-base font-medium text-black whitespace-nowrap truncate`,
 }
 
 const DropdownIndicator = props => (
