@@ -7,6 +7,7 @@ import tw, { styled } from 'twin.macro'
 import 'react-datepicker/dist/react-datepicker.css'
 
 import Icon from '../icon'
+import * as Tooltip from '../tooltip'
 
 registerLocale('sv', sv)
 
@@ -108,35 +109,71 @@ Datepicker.defaultProps = {
 }
 
 export const DatepickerInput = forwardRef(
-  ({ selectsRange, startDate, endDate, ...rest }, ref) => (
-    <button
-      type="button"
-      className="focus:ring-2 w-full block ring-blue-500 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-500 bg-white font-medium px-4 py-2 transition-shadow"
-      ref={ref}
-      {...rest}
-    >
-      <div className="space-x-2 flex items-center">
-        {startDate instanceof Date ? (
-          <div>{format(startDate, 'PPP', { locale: sv })}</div>
-        ) : (
-          <div className="text-gray-800">Välj datum</div>
-        )}
-        {selectsRange && (
-          <Fragment>
-            <Icon className="h-2 w-2 mr-1" name="chevron-right" />
-            {endDate instanceof Date ? (
-              <div>{format(endDate, 'PPP', { locale: sv })}</div>
-            ) : (
-              <div className="text-gray-800">Välj datum</div>
+  (
+    { id, light, label, tooltip, selectsRange, startDate, endDate, ...rest },
+    ref,
+  ) => (
+    <div>
+      <div className="flex items-center justify-between mb-2">
+        {label && (
+          <div className="flex items-center">
+            <label
+              htmlFor={id}
+              className={`block text-sm font-medium mr-1 ${
+                light ? 'text-white' : 'text-black'
+              }`}
+            >
+              <span className="inline-block">{label}</span>
+            </label>
+            {tooltip && (
+              <Tooltip.Root>
+                <Tooltip.Trigger>
+                  <div className="focus:outline-none focus:ring-2 hover:ring-1 ring-gray-600 transition-shadow h-4 w-4 rounded flex items-center justify-center bg-gray-400">
+                    <span className="text-gray-800 text-xs font-medium">?</span>
+                  </div>
+                </Tooltip.Trigger>
+                <Tooltip.Content sideOffset={6} side="right">
+                  <div className="text-sm text-gray-800">{tooltip}</div>
+                  <Tooltip.Arrow offset={0} />
+                </Tooltip.Content>
+              </Tooltip.Root>
             )}
-          </Fragment>
+          </div>
         )}
       </div>
-    </button>
+      <button
+        type="button"
+        className="focus:ring-2 w-full block ring-blue-500 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-500 bg-white font-medium px-4 py-2 transition-shadow"
+        ref={ref}
+        {...rest}
+      >
+        <div className="space-x-2 flex items-center">
+          {startDate instanceof Date ? (
+            <div>{format(startDate, 'PPP', { locale: sv })}</div>
+          ) : (
+            <div className="text-gray-800">Välj datum</div>
+          )}
+          {selectsRange && (
+            <Fragment>
+              <Icon className="h-2 w-2 mr-1" name="chevron-right" />
+              {endDate instanceof Date ? (
+                <div>{format(endDate, 'PPP', { locale: sv })}</div>
+              ) : (
+                <div className="text-gray-800">Välj datum</div>
+              )}
+            </Fragment>
+          )}
+        </div>
+      </button>
+    </div>
   ),
 )
 
 DatepickerInput.propTypes = {
+  id: PropTypes.string.isRequired,
+  light: PropTypes.bool,
+  label: PropTypes.string,
+  tooltip: PropTypes.string,
   selectsRange: PropTypes.bool,
   startDate: PropTypes.instanceOf(Date),
   endDate: PropTypes.instanceOf(Date),
@@ -144,6 +181,9 @@ DatepickerInput.propTypes = {
 }
 
 DatepickerInput.defaultProps = {
+  light: false,
+  label: null,
+  tooltip: null,
   selectsRange: false,
   startDate: null,
   endDate: null,
