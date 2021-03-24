@@ -3,6 +3,7 @@ import ReactSelect, { components } from 'react-select'
 import PropTypes from 'prop-types'
 import tw from 'twin.macro'
 import Icon from '../icon'
+import Loader from '../loader'
 
 /**
  * @param {Object} provided -- the component's default styles
@@ -12,9 +13,9 @@ import Icon from '../icon'
 const styles = {
   control: (provided, state) => {
     const classes = tw`duration-300 outline-none placeholder-gray-700 transition-shadow rounded-md border shadow-none border-gray-500 bg-white font-medium hover:border hover:border-gray-400 active:border ring-blue-500`
-    const shadow = tw`shadow-sm`
+    const focusStyles = tw`shadow-sm ring-2`
     return state.isFocused
-      ? { ...provided, ...classes, ...shadow }
+      ? { ...provided, ...classes, ...focusStyles }
       : { ...provided, ...classes }
   },
   option: (_, state) => {
@@ -27,10 +28,12 @@ const styles = {
     return { ...provided, ...classes }
   },
   menu: () =>
-    tw`border bg-white border-gray-400 shadow-sm rounded-lg p-1 absolute top-0 w-full mt-12 z-20`,
+    tw`border bg-white border-gray-400 shadow-sm rounded-lg px-1 absolute top-0 w-full mt-12 z-20`,
   placeholder: () => tw`text-base font-medium text-gray-800`,
   singleValue: () =>
     tw`text-base font-medium text-black whitespace-nowrap truncate`,
+  noOptionsMessage: () => tw`font-medium text-gray-800 p-2 text-center`,
+  loadingMessage: () => tw`px-2 py-6 flex items-center justify-center`,
 }
 
 const DropdownIndicator = props => (
@@ -42,6 +45,18 @@ const DropdownIndicator = props => (
 )
 
 const IndicatorSeparator = () => null
+
+const NoOptionsMessage = props => (
+  <components.NoOptionsMessage {...props}>
+    Det finns inget att välja
+  </components.NoOptionsMessage>
+)
+
+const LoadingMessage = props => (
+  <components.LoadingMessage {...props}>
+    <Loader />
+  </components.LoadingMessage>
+)
 
 const Select = ({
   id,
@@ -93,7 +108,12 @@ const Select = ({
         onChange={_onChange}
         name={name}
         isDisabled={disabled}
-        components={{ DropdownIndicator, IndicatorSeparator }}
+        components={{
+          DropdownIndicator,
+          IndicatorSeparator,
+          NoOptionsMessage,
+          LoadingMessage,
+        }}
         {...props}
       />
     </div>

@@ -4,12 +4,12 @@ import classNames from 'classnames'
 
 const VARIANTS = {
   primary:
-    'text-white bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 active:ring-2 ring-blue-400',
+    'text-white bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 focus:ring-2 ring-blue-400',
   secondary:
-    'text-black border-gray-400 bg-white hover:bg-gray-200 active:ring-2 ring-gray-400',
+    'text-black border-gray-400 bg-white hover:bg-gray-200 focus:ring-2 ring-gray-400',
   tertiary: 'text-black bg-white-none hover:bg-gray-300 focus:bg-gray-300',
   destructive:
-    'text-white bg-red-500 hover:bg-red-600 focus:bg-red-600 active:ring-2 ring-red-400',
+    'text-white bg-red-500 hover:bg-red-600 focus:bg-red-600 focus:ring-2 ring-red-400',
 }
 
 const Button = React.forwardRef((props, ref) => {
