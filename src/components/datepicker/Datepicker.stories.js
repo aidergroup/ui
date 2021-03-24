@@ -38,10 +38,18 @@ const CustomInputTemplate = () => {
 
   return (
     <Datepicker
+      id="date"
       onChange={date => setStartDate(date)}
       startDate={startDate}
       selected={startDate}
-      customInput={<DatepickerInput startDate={startDate} />}
+      customInput={
+        <DatepickerInput
+          startDate={startDate}
+          id="date"
+          label="Välj datum"
+          tooltip="Välj ett datum!"
+        />
+      }
     />
   )
 }

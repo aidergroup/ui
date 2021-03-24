@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import * as Tooltip from '../tooltip'
 
 const Input = ({ id, label, tooltip, light, error, className, ...props }) => (
