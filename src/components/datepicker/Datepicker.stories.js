@@ -1,50 +1,85 @@
 import React, { useState } from 'react'
-import Datepicker from '.'
+import Datepicker, { DatepickerInput } from '.'
 
-const Template = args => {
-	const [startDate, setStartDate] = useState(new Date())
-	const [endDate, setEndDate] = useState(null)
+const DefaultTemplate = () => {
+  const [startDate, setStartDate] = useState(new Date())
 
-	const onChange = dates => {
-		if (!dates.length) {
-			setStartDate(dates)
-		} else {
-			const [start, end] = dates
-			setStartDate(start)
-			setEndDate(end)
-		}
-	}
-
-	return (
-		<div className="w-full">
-			<Datepicker
-				onChange={onChange}
-				startDate={startDate}
-				endDate={endDate}
-				showPopperArrow={false}
-				{...args}
-			/>
-		</div>
-	)
+  return (
+    <Datepicker
+      onChange={date => setStartDate(date)}
+      startDate={startDate}
+      selected={startDate}
+      inline
+    />
+  )
 }
 
-export const Default = Template.bind({})
+export const Default = DefaultTemplate.bind({})
 
-Default.args = {
-	showMonthYearPicker: false,
-	selectsRange: true,
-	inline: true,
+const MonthTemplate = () => {
+  const [startDate, setStartDate] = useState(new Date())
+
+  return (
+    <Datepicker
+      onChange={date => setStartDate(date)}
+      startDate={startDate}
+      selected={startDate}
+      selectsRange={false}
+      showMonthYearPicker
+      inline
+    />
+  )
 }
 
-export const MonthPicker = Template.bind({})
+export const Month = MonthTemplate.bind({})
 
-MonthPicker.args = {
-	showMonthYearPicker: true,
-	selectsRange: false,
-	inline: true,
+const CustomInputTemplate = () => {
+  const [startDate, setStartDate] = useState(new Date())
+
+  return (
+    <Datepicker
+      onChange={date => setStartDate(date)}
+      startDate={startDate}
+      selected={startDate}
+      customInput={<DatepickerInput startDate={startDate} />}
+    />
+  )
 }
+
+export const CustomInput = CustomInputTemplate.bind({})
+
+const CustomInputRangeTemplate = () => {
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(null)
+
+  const onChange = dates => {
+    if (!dates.length) {
+      setStartDate(dates)
+    } else {
+      const [start, end] = dates
+      setStartDate(start)
+      setEndDate(end)
+    }
+  }
+
+  return (
+    <Datepicker
+      onChange={onChange}
+      startDate={startDate}
+      endDate={endDate}
+      selected={startDate}
+      shouldCloseOnSelect={false}
+      selectsRange
+      customInput={
+        <DatepickerInput selectsRange startDate={startDate} endDate={endDate} />
+      }
+    />
+  )
+}
+
+export const CustomInputRange = CustomInputRangeTemplate.bind({})
 
 export default {
-	title: 'Components/Datepicker',
-	component: Datepicker,
+  title: 'Components/Datepicker',
+  component: Datepicker,
 }

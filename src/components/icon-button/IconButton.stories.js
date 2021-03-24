@@ -7,12 +7,12 @@ const Template = args => <IconButton {...args} />
 export const Default = Template.bind({})
 
 Default.args = {
-	icon: <Icon name="bell" className="h-4 w-4 fill-current text-black" />,
-	variant: 'primary',
-	disabled: false,
+  icon: <Icon name="bell" className="h-4 w-4 fill-current text-black" />,
+  variant: 'primary',
+  disabled: false,
 }
 
 export default {
-	title: 'Components/IconButton',
-	component: IconButton,
+  title: 'Components/IconButton',
+  component: IconButton,
 }
