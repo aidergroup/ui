@@ -32,7 +32,7 @@ export default {
       babelHelpers: 'bundled',
       include: ['src/**/*'],
       exclude: 'node_modules/**',
-      plugins: ['transform-class-properties'],
+      plugins: ['transform-class-properties', 'babel-plugin-styled-components'],
     }),
     commonjs(),
     filesize(),

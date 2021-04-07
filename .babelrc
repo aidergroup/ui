@@ -9,7 +9,5 @@
       }
     ]
   ],
-  "plugins": ["babel-plugin-macros", ["babel-plugin-styled-components", {
-      "namespace": "ui"
-    }]]
+  "plugins": ["babel-plugin-macros"]
 }

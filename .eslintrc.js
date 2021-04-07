@@ -35,6 +35,8 @@ module.exports = {
     'no-underscore-dangle': 0,
     'react/jsx-fragments': 0,
     'no-alert': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
   },
   // overrides: {
   //   files: 'src/**/*.stories.js',
