@@ -1,4 +1,5 @@
 // Export icons as React Components
+export { ReactComponent as AddUser } from './add-user.svg'
 export { ReactComponent as ArrowUp } from './arrow-up.svg'
 export { ReactComponent as Airplane } from './airplane.svg'
 export { ReactComponent as Alert } from './alert.svg'
@@ -20,6 +21,7 @@ export { ReactComponent as BrokenLink } from './broken-link.svg'
 export { ReactComponent as Calculator } from './calculator.svg'
 export { ReactComponent as Calendar } from './calendar.svg'
 export { ReactComponent as Camera } from './camera.svg'
+export { ReactComponent as Check } from './check.svg'
 export { ReactComponent as CheckboxCircle } from './checkbox-circle.svg'
 export { ReactComponent as ChevronDown } from './chevron-down.svg'
 export { ReactComponent as ChevronLeft } from './chevron-left.svg'

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
+  AddUser,
   ArrowUp,
   Airplane,
   Alert,
@@ -23,6 +24,7 @@ import {
   Calculator,
   Calendar,
   Camera,
+  Check,
   CheckboxCircle,
   ChevronDown,
   ChevronLeft,
@@ -68,6 +70,7 @@ import {
 } from '../../assets/icons'
 
 export const ELEMENTS = {
+  'add-user': <AddUser />,
   'arrow-up': <ArrowUp />,
   airplane: <Airplane />,
   alert: <Alert />,
@@ -89,6 +92,7 @@ export const ELEMENTS = {
   calculator: <Calculator />,
   calendar: <Calendar />,
   camera: <Camera />,
+  check: <Check />,
   'checkbox-circle': <CheckboxCircle />,
   'chevron-down': <ChevronDown />,
   'chevron-left': <ChevronLeft />,
