@@ -50,7 +50,7 @@ module.exports = {
   },
   variants: {
     opacity: ['active', 'hover', 'focus', 'disabled'],
-    backgroundColor: ['active', 'hover', 'focus', 'disabled'],
+    backgroundColor: ['active', 'hover', 'focus', 'disabled', 'group-hover'],
     textColor: ['active', 'hover', 'focus', 'disabled'],
     cursor: ['active', 'hover', 'focus', 'disabled'],
     ringWidth: ['hover', 'focus', 'active'],
