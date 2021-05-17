@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import * as Dropdown from '.'
 import Avatar from '../avatar'
 import Datepicker from '../datepicker'
+import Icon from '../icon'
 
 const Template = args => (
   <Dropdown.Root {...args}>
@@ -10,16 +11,31 @@ const Template = args => (
     </Dropdown.Trigger>
     <Dropdown.Content>
       <Dropdown.Group>
-        <Dropdown.Label>Inloggad som</Dropdown.Label>
-        <div className="font-medium px-2">Albin Sven Gunnar Martinsson</div>
+        <div className="py-2">
+          <Dropdown.Label>Inloggad som</Dropdown.Label>
+          <div className="font-medium text-sm px-2">
+            Albin Sven Gunnar Martinsson
+          </div>
+        </div>
+      </Dropdown.Group>
+      <Dropdown.Separator />
+      <Dropdown.Group>
+        <Dropdown.Item onSelect={() => alert('Lägg till huvudman')}>
+          <Icon
+            name="add-user"
+            className="fill-current text-black w-3 h-3 mr-1"
+          />
+          Lägg till huvudman
+        </Dropdown.Item>
+        <Dropdown.Item onSelect={() => alert('Gå till inställningar')}>
+          <Icon name="cog" className="fill-current text-black w-3 h-3 mr-1" />
+          Inställningar
+        </Dropdown.Item>
       </Dropdown.Group>
       <Dropdown.Separator />
       <Dropdown.Group>
         <Dropdown.Item onSelect={() => alert('Logga ut')}>
           Logga ut
-        </Dropdown.Item>
-        <Dropdown.Item onSelect={() => alert('Gå till inställningar')}>
-          Inställningar
         </Dropdown.Item>
       </Dropdown.Group>
     </Dropdown.Content>
