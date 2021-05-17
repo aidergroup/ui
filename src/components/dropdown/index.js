@@ -33,8 +33,8 @@ const CheckboxItem = styled(RadixCheckboxItem)`
   ${tw`flex w-full px-2 items-center text-sm font-medium px-3 py-2.5 outline-none hover:bg-gray-300`}
 `
 
-const ItemIndicator = React.forwardRef(forwardedRef => (
-  <RadixItemIndicator ref={forwardedRef}>
+const ItemIndicator = React.forwardRef(({ ...props }, forwardedRef) => (
+  <RadixItemIndicator {...props} ref={forwardedRef}>
     <Icon
       name="check"
       className="text-blue-600 fill-current w-2.5 h-2.5 mr-1"
