@@ -18,17 +18,16 @@ const Avatar = React.forwardRef((props, ref) => {
   const { name, isLoading, ...rest } = props
 
   return (
-    <button
+    <div
       {...rest}
       ref={ref}
-      type="button"
       disabled={isLoading}
       className={`bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 active:ring-2 ring-blue-400 focus:outline-none text-sm text-white font-semibold h-10 w-10 flex items-center justify-center rounded-lg transition duration-200 ${
         isLoading ? 'animate-pulse' : undefined
       }`}
     >
       {!isLoading && <StyledLabel>{getInitials(name)}</StyledLabel>}
-    </button>
+    </div>
   )
 })
 
