@@ -2,8 +2,9 @@ import React, { useRef, useCallback } from 'react'
 import usePortal from 'react-useportal'
 import styled from 'styled-components'
 import tw from 'twin.macro'
-
 import { motion, AnimatePresence } from 'framer-motion'
+
+const NULL_EVENT = { currentTarget: { contains: () => false } }
 
 const useModal = ({ onOpen, onClose, ...config } = {}) => {
   const modal = useRef()
@@ -59,11 +60,19 @@ const useModal = ({ onOpen, onClose, ...config } = {}) => {
   )
 
   return Object.assign([openPortal, closePortal, isOpen, Modal, togglePortal], {
-    Modal,
-    toggleModal: togglePortal,
-    openModal: openPortal,
-    closeModal: closePortal,
+    // Patch toggleModal, openModal and closeModal. It will break if not passed an event.
+    // See https://github.com/alex-cory/react-useportal/issues/36#issuecomment-670319956
+    toggleModal: event => {
+      togglePortal(event || NULL_EVENT)
+    },
+    openModal: event => {
+      openPortal(event || NULL_EVENT)
+    },
+    closeModal: event => {
+      closePortal(event || NULL_EVENT)
+    },
     isOpen,
+    Modal,
   })
 }
 
