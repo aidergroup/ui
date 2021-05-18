@@ -2,6 +2,9 @@ import React, { useRef, useCallback } from 'react'
 import usePortal from 'react-useportal'
 import styled from 'styled-components'
 import tw from 'twin.macro'
+import { motion, AnimatePresence } from 'framer-motion'
+
+const NULL_EVENT = { currentTarget: { contains: () => false } }
 
 const useModal = ({ onOpen, onClose, ...config } = {}) => {
   const modal = useRef()
@@ -28,34 +31,61 @@ const useModal = ({ onOpen, onClose, ...config } = {}) => {
   })
 
   const Modal = useCallback(
-    props => (
+    ({ visible, ...props }) => (
       <Portal>
-        <Backdrop>
-          <Container ref={modal} {...props} />
-        </Backdrop>
+        <AnimatePresence>
+          {visible && (
+            <Container>
+              <ModalContainer
+                key="container"
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 100 }}
+                ref={modal}
+                {...props}
+              />
+              <Backdrop
+                key="backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              />
+            </Container>
+          )}
+        </AnimatePresence>
       </Portal>
     ),
     [],
   )
 
   return Object.assign([openPortal, closePortal, isOpen, Modal, togglePortal], {
-    Modal,
-    toggleModal: togglePortal,
-    openModal: openPortal,
-    closeModal: closePortal,
+    // Patch toggleModal, openModal and closeModal. It will break if not passed an event.
+    // See https://github.com/alex-cory/react-useportal/issues/36#issuecomment-670319956
+    toggleModal: event => {
+      togglePortal(event || NULL_EVENT)
+    },
+    openModal: event => {
+      openPortal(event || NULL_EVENT)
+    },
+    closeModal: event => {
+      closePortal(event || NULL_EVENT)
+    },
     isOpen,
+    Modal,
   })
 }
 
 const Container = styled.div`
-  ${tw`flex flex-col bg-white shadow-lg rounded-xl`}
-  max-width: 640px;
-  max-height: 800px;
+  ${tw`fixed inset-0 flex items-center justify-center`}
 `
 
-const Backdrop = styled.div`
-  ${tw`flex fixed top-0 left-0 items-center justify-center w-screen h-screen z-40`}
-  background-color: rgba(0, 0, 0, 0.45);
+const ModalContainer = styled(motion.div)`
+  ${tw`relative z-50`}
+`
+
+const Backdrop = styled(motion.div)`
+  ${tw`fixed inset-0 w-screen h-screen z-40 bg-black bg-opacity-75`}
 `
 
 export default useModal

@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../../components/button'
 import useModal from '.'
 
 const Demo = () => {
@@ -6,25 +7,22 @@ const Demo = () => {
 
   return (
     <div>
-      <button type="button" onClick={openModal}>
-        Open modal
-      </button>
-      {isOpen && (
-        <Modal>
-          <div className="flex items-center justify-between p-3">
-            <span>
-              Click outside the modal to close it, or use the button! 👉
-            </span>
-            <button
-              className="bg-red-500 text-white py-1 px-3 rounded"
-              type="button"
-              onClick={closeModal}
-            >
-              Close modal
-            </button>
+      <Button onClick={openModal} title="Öppna modal" />
+      <Modal visible={isOpen}>
+        <div className="p-6 bg-white rounded-xl w-96">
+          <div className="text-xl font-medium mb-2">
+            Välkommen till modalen!
           </div>
-        </Modal>
-      )}
+          <div className="text-base font-regular text-gray-800 mb-6">
+            Stäng modalen genom att klicka utanför eller på någon av knapparna
+            nedan.
+          </div>
+          <div className="flex justify-between">
+            <Button variant="secondary" title="Avbryt" onClick={closeModal} />
+            <Button variant="primary" title="Godkänn" onClick={closeModal} />
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
