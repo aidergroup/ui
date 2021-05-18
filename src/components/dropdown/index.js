@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import {
   Root,
   Trigger,
+  Arrow,
+  Group,
+  RadioGroup,
   Content as RadixContent,
   Label as RadixLabel,
   Item as RadixItem,
-  Group as RadixGroup,
   CheckboxItem as RadixCheckboxItem,
   ItemIndicator as RadixItemIndicator,
-  RadioGroup as RadixRadioGroup,
   RadioItem as RadixRadioItem,
   Separator as RadixSeparator,
-  Arrow as RadixArrow,
 } from '@radix-ui/react-dropdown-menu'
 import tw, { styled } from 'twin.macro'
 
@@ -26,15 +26,13 @@ const Label = styled(RadixLabel)`
 const Item = styled(RadixItem)`
   ${tw`flex w-full items-center text-sm font-medium px-3 py-2.5 outline-none hover:bg-gray-300`}
 `
-const Group = styled(RadixGroup)`
-  ${tw``}
-`
+
 const CheckboxItem = styled(RadixCheckboxItem)`
   ${tw`flex w-full px-2 items-center text-sm font-medium px-3 py-2.5 outline-none hover:bg-gray-300`}
 `
 
-const ItemIndicator = React.forwardRef(({ ...props }, forwardedRef) => (
-  <RadixItemIndicator {...props} ref={forwardedRef}>
+const ItemIndicator = forwardRef((props, ref) => (
+  <RadixItemIndicator {...props} ref={ref}>
     <Icon
       name="check"
       className="text-blue-600 fill-current w-2.5 h-2.5 mr-1"
@@ -42,28 +40,24 @@ const ItemIndicator = React.forwardRef(({ ...props }, forwardedRef) => (
   </RadixItemIndicator>
 ))
 
-const RadioGroup = styled(RadixRadioGroup)`
-  ${tw``}
-`
 const RadioItem = styled(RadixRadioItem)`
   ${tw`flex items-center px-3 py-2.5 text-sm font-medium outline-none hover:bg-gray-300`}
 `
 const Separator = styled(RadixSeparator)`
   ${tw`h-px flex mx-2 bg-gray-400`}
 `
-const Arrow = styled(RadixArrow)``
 
 export {
   Root,
   Trigger,
+  Arrow,
+  Group,
+  RadioGroup,
   Content,
   Label,
   Item,
-  Group,
   CheckboxItem,
   ItemIndicator,
-  RadioGroup,
   RadioItem,
   Separator,
-  Arrow,
 }
