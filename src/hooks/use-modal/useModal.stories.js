@@ -9,22 +9,20 @@ const Demo = () => {
       <button type="button" onClick={openModal}>
         Open modal
       </button>
-      {isOpen && (
-        <Modal>
-          <div className="flex items-center justify-between p-3">
-            <span>
-              Click outside the modal to close it, or use the button! 👉
-            </span>
-            <button
-              className="bg-red-500 text-white py-1 px-3 rounded"
-              type="button"
-              onClick={closeModal}
-            >
-              Close modal
-            </button>
-          </div>
-        </Modal>
-      )}
+      <Modal visible={isOpen}>
+        <div className="flex items-center justify-between p-3">
+          <span>
+            Click outside the modal to close it, or use the button! 👉
+          </span>
+          <button
+            className="bg-red-500 text-white py-1 px-3 rounded"
+            type="button"
+            onClick={closeModal}
+          >
+            Close modal
+          </button>
+        </div>
+      </Modal>
     </div>
   )
 }
