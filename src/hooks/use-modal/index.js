@@ -6,20 +6,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const NULL_EVENT = { currentTarget: { contains: () => false } }
 
-const useModal = ({ onOpen, onClose, ...config } = {}) => {
+const useModal = ({ ...config } = {}) => {
   const modal = useRef()
 
   const { isOpen, togglePortal, openPortal, closePortal, Portal } = usePortal({
-    onOpen(event) {
-      if (typeof onOpen === 'function') {
-        onOpen(event)
-      }
-    },
-    onClose(event) {
-      if (typeof onClose === 'function') {
-        onClose(event)
-      }
-    },
     onPortalClick({ target }) {
       const clickingOutsideModal =
         modal && modal.current && !modal.current.contains(target)
@@ -31,16 +21,16 @@ const useModal = ({ onOpen, onClose, ...config } = {}) => {
   })
 
   const Modal = useCallback(
-    ({ visible, ...props }) => (
+    ({ visible, onClose, ...props }) => (
       <Portal>
-        <AnimatePresence>
+        <AnimatePresence onExitComplete={onClose}>
           {visible && (
             <Container>
               <ModalContainer
                 key="container"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 100 }}
+                exit={{ opacity: 0 }}
                 ref={modal}
                 {...props}
               />

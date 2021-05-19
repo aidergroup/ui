@@ -25,7 +25,10 @@ const Datepicker = ({ inline, ...props }) => (
 
 const Wrapper = styled.div`
   & .react-datepicker {
-    ${props => (props.inline ? tw`border-none` : tw`border border-gray-400`)}
+    ${props =>
+      props.inline
+        ? tw`border-none`
+        : tw`border border-black border-opacity-10`}
     ${tw`font-sans border w-full`}
   }
 
