@@ -18,7 +18,7 @@ import tw, { styled } from 'twin.macro'
 import Icon from '../icon'
 
 const Content = styled(RadixContent)`
-  ${tw`border bg-white border-gray-400 shadow-sm rounded-lg max-w-sm`}
+  ${tw`border bg-white border-black border-opacity-10 shadow-sm rounded-lg overflow-hidden`}
 `
 const Label = styled(RadixLabel)`
   ${tw`text-xs px-2 mt-1 text-gray-800`}
