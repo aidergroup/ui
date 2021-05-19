@@ -40,7 +40,7 @@ const useModal = ({ onOpen, onClose, ...config } = {}) => {
                 key="container"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 100 }}
+                exit={{ opacity: 0 }}
                 ref={modal}
                 {...props}
               />
