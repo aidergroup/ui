@@ -22,7 +22,7 @@ const Avatar = React.forwardRef((props, ref) => {
       {...rest}
       ref={ref}
       disabled={isLoading}
-      className={`bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 active:ring-2 ring-blue-400 focus:outline-none text-sm text-white font-semibold h-10 w-10 flex items-center justify-center rounded-lg transition duration-200 ${
+      className={`bg-blue-500 text-sm text-white font-semibold h-10 w-10 flex items-center justify-center rounded-lg ${
         isLoading ? 'animate-pulse' : undefined
       }`}
     >
