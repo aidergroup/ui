@@ -67,7 +67,7 @@ const useModal = ({ ...config } = {}) => {
 }
 
 const Container = styled.div`
-  ${tw`fixed inset-0 flex items-center justify-center`}
+  ${tw`fixed inset-0 flex items-center justify-center z-50`}
 `
 
 const ModalContainer = styled(motion.div)`
