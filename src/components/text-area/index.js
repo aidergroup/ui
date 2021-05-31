@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import * as Tooltip from '../tooltip'
 
-const Input = ({ id, label, tooltip, error, className, ...props }) => (
+const TextArea = ({ id, label, tooltip, error, className, ...props }) => (
   <div className={className}>
     <div className="flex items-center justify-between mb-2">
       {label && (
@@ -32,7 +32,7 @@ const Input = ({ id, label, tooltip, error, className, ...props }) => (
         </span>
       )}
     </div>
-    <input
+    <textarea
       id={id}
       className="focus:ring-2 ring-blue-500 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-500 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none"
       {...props}
@@ -40,7 +40,7 @@ const Input = ({ id, label, tooltip, error, className, ...props }) => (
   </div>
 )
 
-Input.propTypes = {
+TextArea.propTypes = {
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   label: PropTypes.string,
@@ -49,11 +49,11 @@ Input.propTypes = {
   className: PropTypes.string,
 }
 
-Input.defaultProps = {
+TextArea.defaultProps = {
   label: '',
   tooltip: '',
   error: '',
   className: '',
 }
 
-export default Input
+export default TextArea

@@ -1,7 +1,7 @@
 import React from 'react'
-import Input from '.'
+import TextArea from '.'
 
-const Template = args => <Input {...args} />
+const Template = args => <TextArea {...args} />
 
 export const Default = Template.bind({})
 
@@ -13,9 +13,10 @@ Default.args = {
   error: null,
   type: 'text',
   disabled: false,
+  rows: 5,
 }
 
 export default {
-  title: 'Components/Input',
-  component: Input,
+  title: 'Components/TextArea',
+  component: TextArea,
 }
