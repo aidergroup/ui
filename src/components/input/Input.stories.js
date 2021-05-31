@@ -12,7 +12,6 @@ Default.args = {
   tooltip: 'This is a tooltip created to guide the user.',
   error: null,
   type: 'text',
-  light: false,
   disabled: false,
 }
 
