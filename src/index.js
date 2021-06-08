@@ -1,5 +1,5 @@
 // Tailwind Config
-export * as tailwindConfig from '../tailwind.config.js'
+export * as tailwindConfig from '../tailwind.config'
 
 // Components
 export { default as Button } from './components/button'
