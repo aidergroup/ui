@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 const VARIANTS = {
-  primary:
-    'bg-white hover:bg-gray-300 focus:ring-2 active:ring-2 ring-blue-400',
+  primary: 'bg-white hover:bg-gray-300',
 }
 
 const IconButton = React.forwardRef((props, ref) => {

@@ -9,7 +9,6 @@ const data = [
 ]
 const colorFrom = '#009AC8'
 const colorTo = '#093442'
-const total = data.reduce((a, item) => a + item.value, 0)
 const coloredData = colorData(data, colorFrom, colorTo)
 
 const Template = args => (
@@ -23,7 +22,6 @@ export const Default = Template.bind({})
 Default.args = {
   data: coloredData,
   renderTooltipContent: ({ title, value }) => `${title} - ${value} kr`,
-  children: <span className="font-medium">-{total} SEK</span>,
 }
 
 export default {

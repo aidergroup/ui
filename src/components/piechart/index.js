@@ -25,17 +25,16 @@ export const colorData = (data, colorFrom, colorTo) => {
   return data.map((item, index) => ({ ...item, color: colors[index] }))
 }
 
-const PieChart = ({ data, renderTooltipContent, children }) => {
+const PieChart = ({ data, renderTooltipContent }) => {
   const [active, set] = useState(null)
 
   return (
     <div className="relative" data-tip="" data-for="chart">
       <Chart
         data={data}
-        lineWidth={30}
+        lineWidth={100}
         onMouseOver={(_, index) => set(index)}
         onMouseOut={() => set(null)}
-        paddingAngle={2}
       />
       {typeof renderTooltipContent === 'function' && (
         <ReactTooltip
@@ -47,7 +46,6 @@ const PieChart = ({ data, renderTooltipContent, children }) => {
           }
         />
       )}
-      <div className="inset-center">{children}</div>
     </div>
   )
 }
@@ -61,12 +59,10 @@ PieChart.propTypes = {
     }),
   ).isRequired,
   renderTooltipContent: PropTypes.func,
-  children: PropTypes.node,
 }
 
 PieChart.defaultProps = {
   renderTooltipContent: null,
-  children: null,
 }
 
 export default PieChart
