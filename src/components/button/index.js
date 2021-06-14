@@ -16,7 +16,7 @@ const Button = React.forwardRef((props, ref) => {
   const { title, className, type, block, variant, isLoading, ...rest } = props
 
   const classes = classNames(
-    'border border-transparent relative focus:outline-none rounded-full disabled:bg-gray-400 disabled:text-gray-700 disabled:cursor-not-allowed outline-none px-5 py-2 font-medium transition duration-300',
+    'border border-transparent relative focus:outline-none rounded-lg disabled:bg-gray-400 disabled:text-gray-700 disabled:cursor-not-allowed outline-none px-5 py-2 font-medium transition duration-300',
     className,
     (variant && VARIANTS[variant]) || null,
   )
