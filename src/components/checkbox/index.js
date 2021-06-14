@@ -31,11 +31,11 @@ const Checkbox = ({
 )
 
 const Root = styled(RadixCheckbox.Root)`
-  ${tw`appearance-none flex items-center justify-center bg-transparent border border-gray-600 w-6 h-6 hover:bg-gray-300 transition ring-blue-500 hover:ring-2 focus:ring-2 rounded-md focus:outline-none`}
+  ${tw`appearance-none flex items-center justify-center bg-transparent border border-gray-600 w-5 h-5 hover:bg-gray-300 transition ring-blue-500 hover:ring-2 focus:ring-2 rounded-md focus:outline-none`}
 `
 
 const Indicator = styled(RadixCheckbox.Indicator)`
-  ${tw`h-4 w-4 bg-blue-500 rounded shadow-sm`}
+  ${tw`h-3.5 w-3.5 bg-blue-500 rounded shadow-sm`}
 `
 
 Checkbox.propTypes = {
