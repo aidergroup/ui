@@ -30,7 +30,11 @@ const useModal = ({ ...config } = {}) => {
                 key="container"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
+                exit={{ opacity: 0, y: 50 }}
+                transition={{
+                  y: { type: 'spring', duration: 0.35 },
+                  opacity: { duration: 0.2 },
+                }}
                 ref={modal}
                 {...props}
               />
@@ -39,7 +43,7 @@ const useModal = ({ ...config } = {}) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ opacity: { duration: 0.2 } }}
               />
             </Container>
           )}
