@@ -11,7 +11,7 @@ const Trigger = styled(RadixTrigger)`
 `
 
 const Content = styled(RadixContent)`
-  ${tw`px-2 py-1 items-center flex bg-gray-400 rounded-md`}
+  ${tw`px-2 py-1 items-center text-sm flex bg-gray-300 text-gray-800 rounded-md`}
 `
 
 const Arrow = styled(RadixArrow)`

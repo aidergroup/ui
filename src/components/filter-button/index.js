@@ -14,7 +14,7 @@ const FilterButton = React.forwardRef((props, ref) => {
       ref={ref}
       {...rest}
     >
-      <span className="font-medium text-left text-gray-800">{title}</span>
+      <span className="font-medium text-left text-black">{title}</span>
       <span
         className={`${
           value ? 'text-black' : 'text-gray-700'

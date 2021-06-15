@@ -12,15 +12,15 @@ import Loader from '../loader'
  */
 const styles = {
   control: (provided, state) => {
-    const classes = tw`duration-300 outline-none placeholder-gray-700 transition-shadow rounded-md border shadow-none border-gray-500 bg-white font-medium hover:border hover:border-gray-400 active:border ring-blue-500`
+    const classes = tw`duration-300 outline-none placeholder-gray-700 transition-shadow rounded-md border shadow-none border-gray-400 bg-white font-medium hover:border hover:border-gray-400 active:border ring-blue-500`
     const focusStyles = tw`shadow-sm ring-2`
     return state.isFocused
       ? { ...provided, ...classes, ...focusStyles }
       : { ...provided, ...classes }
   },
   option: (_, state) => {
-    const defaultClasses = tw`rounded-lg px-2 py-1.5 rounded-md outline-none text-base font-medium transition-colors duration-200 text-black hover:bg-gray-300 focus:bg-gray-400 active:bg-gray-400`
-    const selectedClasses = tw`rounded-lg px-2 py-1.5 rounded-md outline-none text-base font-medium transition-colors duration-200 text-black focus:bg-gray-400 active:bg-gray-400 bg-gray-500`
+    const defaultClasses = tw`rounded-lg px-2 py-1.5 rounded-md outline-none text-base font-medium transition-colors duration-200 text-black hover:bg-gray-200 focus:bg-gray-300 active:bg-gray-300`
+    const selectedClasses = tw`rounded-lg px-2 py-1.5 rounded-md outline-none text-base font-medium transition-colors duration-200 text-black focus:bg-gray-300 active:bg-gray-300 bg-gray-400`
     return state.isSelected ? selectedClasses : defaultClasses
   },
   valueContainer: provided => {
