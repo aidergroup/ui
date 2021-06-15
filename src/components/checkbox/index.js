@@ -26,17 +26,18 @@ const Checkbox = ({
     value={value}
     {...props}
   >
-    <Indicator indeterminate={checked !== 'indeterminate'} />
+    <Indicator indeterminate={checked === 'indeterminate'} />
   </Root>
 )
 
 const Root = styled(RadixCheckbox.Root)`
-  ${tw`appearance-none flex items-center justify-center bg-transparent border border-gray-600 w-5 h-5 hover:bg-gray-300 transition ring-blue-500 hover:ring-2 focus:ring-2 rounded-md focus:outline-none`}
+  ${tw`appearance-none flex items-center justify-center bg-transparent border border-gray-500 w-5 h-5 hover:bg-gray-300 transition ring-blue-500 hover:ring-2 focus:ring-2 rounded-md focus:outline-none`}
 `
 
 const Indicator = styled(RadixCheckbox.Indicator)`
-  ${tw`w-3.5 rounded bg-blue-500 h-3.5`}
-  ${props => props.indeterminate && tw`bg-gray-700 h-1`}
+  ${tw`w-3.5 rounded`}
+  ${props =>
+    props.indeterminate ? tw`bg-gray-600 h-1` : tw`bg-blue-500 h-3.5`}
 `
 
 Checkbox.propTypes = {
