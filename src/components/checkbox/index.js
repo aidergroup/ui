@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
-import styled from 'styled-components'
-import tw from 'twin.macro'
 
 const Checkbox = ({
   checked,
   defaultChecked,
+  indeterminate,
   onCheckedChange,
   disabled,
   required,
@@ -14,35 +13,42 @@ const Checkbox = ({
   name,
   value,
   ...props
-}) => (
-  <Root
-    checked={checked}
-    defaultChecked={defaultChecked}
-    onCheckedChange={onCheckedChange}
-    disabled={disabled}
-    required={required}
-    readOnly={readOnly}
-    name={name}
-    value={value}
-    {...props}
-  >
-    <Indicator indeterminate={checked === 'indeterminate'} />
-  </Root>
-)
+}) => {
+  const [_checked, set] = useState(false)
 
-const Root = styled(RadixCheckbox.Root)`
-  ${tw`appearance-none flex items-center justify-center bg-transparent border border-gray-500 w-5 h-5 hover:bg-gray-300 transition ring-blue-500 hover:ring-2 focus:ring-2 rounded-md focus:outline-none`}
-`
+  useEffect(() => {
+    set(indeterminate ? 'indeterminate' : checked)
+  }, [indeterminate, checked])
 
-const Indicator = styled(RadixCheckbox.Indicator)`
-  ${tw`w-3.5 rounded`}
-  ${props =>
-    props.indeterminate ? tw`bg-gray-600 h-1` : tw`bg-blue-500 h-3.5`}
-`
+  return (
+    <RadixCheckbox.Root
+      className="appearance-none flex items-center justify-center bg-transparent border border-gray-500 w-5 h-5 hover:bg-gray-300 transition ring-blue-500 hover:ring-2 focus:ring-2 rounded-md focus:outline-none"
+      checked={_checked}
+      defaultChecked={defaultChecked}
+      onCheckedChange={onCheckedChange}
+      disabled={disabled}
+      required={required}
+      readOnly={readOnly}
+      name={name}
+      value={value}
+      {...props}
+    >
+      <RadixCheckbox.Indicator>
+        {_checked === true && (
+          <span className="block w-3.5 rounded bg-blue-500 h-3.5" />
+        )}
+        {_checked === 'indeterminate' && (
+          <span className="block w-3.5 rounded bg-gray-600 h-1" />
+        )}
+      </RadixCheckbox.Indicator>
+    </RadixCheckbox.Root>
+  )
+}
 
 Checkbox.propTypes = {
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool,
+  indeterminate: PropTypes.bool,
   onCheckedChange: PropTypes.func,
   disabled: PropTypes.bool,
   required: PropTypes.bool,
@@ -54,6 +60,7 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   checked: false,
   defaultChecked: false,
+  indeterminate: false,
   onCheckedChange: null,
   disabled: false,
   required: false,
