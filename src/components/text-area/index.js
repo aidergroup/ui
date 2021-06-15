@@ -34,7 +34,7 @@ const TextArea = ({ id, label, tooltip, error, className, ...props }) => (
     </div>
     <textarea
       id={id}
-      className="focus:ring-2 ring-blue-500 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-500 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none"
+      className="focus:ring-2 ring-blue-500 disabled:bg-gray-400 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-400 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none"
       {...props}
     />
   </div>
