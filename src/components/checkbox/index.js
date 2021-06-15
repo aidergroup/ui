@@ -26,7 +26,7 @@ const Checkbox = ({
     value={value}
     {...props}
   >
-    <Indicator />
+    <Indicator indeterminate={checked !== 'indeterminate'} />
   </Root>
 )
 
@@ -35,7 +35,8 @@ const Root = styled(RadixCheckbox.Root)`
 `
 
 const Indicator = styled(RadixCheckbox.Indicator)`
-  ${tw`h-3.5 w-3.5 bg-blue-500 rounded shadow-sm`}
+  ${tw`w-3.5 rounded bg-blue-500 h-3.5`}
+  ${props => props.indeterminate && tw`bg-gray-700 h-1`}
 `
 
 Checkbox.propTypes = {
