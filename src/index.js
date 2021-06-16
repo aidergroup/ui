@@ -17,6 +17,7 @@ export { default as Switch } from './components/switch'
 export { default as Checkbox } from './components/checkbox'
 export { default as Datepicker, DatepickerInput } from './components/datepicker'
 export { default as RichEditor } from './components/rich-editor'
+export { default as Table } from './components/table'
 
 export * as Dropdown from './components/dropdown'
 export * as Tooltip from './components/tooltip'
