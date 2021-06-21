@@ -1,9 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import NumberFormat from 'react-number-format'
 
 import * as Tooltip from '../tooltip'
 
-const Input = ({ id, label, tooltip, error, className, ...props }) => (
+const INPUT_CLASSES =
+  'focus:ring-2 ring-blue-500 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-500 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none'
+
+const Input = ({
+  id,
+  label,
+  tooltip,
+  error,
+  className,
+  type,
+  onChange,
+  ...props
+}) => (
   <div className={className}>
     <div className="flex items-center justify-between mb-2">
       {label && (
@@ -32,17 +45,30 @@ const Input = ({ id, label, tooltip, error, className, ...props }) => (
         </span>
       )}
     </div>
-    <input
-      id={id}
-      className="focus:ring-2 ring-blue-500 focus:outline-none disabled:bg-gray-400 placeholder-gray-700 rounded-lg border border-gray-400 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none"
-      {...props}
-    />
+    {type === 'currency' ? (
+      <NumberFormat
+        id={id}
+        className={INPUT_CLASSES}
+        type="text"
+        onValueChange={onChange}
+        {...props}
+      />
+    ) : (
+      <input
+        id={id}
+        className={INPUT_CLASSES}
+        type={type}
+        onChange={onChange}
+        {...props}
+      />
+    )}
   </div>
 )
 
 Input.propTypes = {
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
   label: PropTypes.string,
   tooltip: PropTypes.string,
   error: PropTypes.string,
