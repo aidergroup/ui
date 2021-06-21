@@ -22,7 +22,7 @@ const Checkbox = ({
 
   return (
     <RadixCheckbox.Root
-      className="appearance-none flex items-center justify-center bg-transparent border border-gray-400 w-5 h-5 hover:bg-gray-200 transition ring-blue-500 hover:ring-2 active:ring-2 rounded-md focus:outline-none"
+      className="appearance-none flex items-center justify-center bg-white border border-gray-400 w-5 h-5 hover:bg-gray-200 transition rounded-md focus:outline-none"
       checked={_checked}
       defaultChecked={defaultChecked}
       onCheckedChange={onCheckedChange}
