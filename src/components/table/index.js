@@ -54,9 +54,9 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
             <tr {...getHeaderGroupProps()}>
               {headers.map(({ id, getHeaderProps, render }) => (
                 <th
-                  className={`py-2 text-sm ${
+                  className={`h-10 text-xs ${
                     id === 'selectable' ? 'w-0 pl-3' : 'w-auto px-3'
-                  } font-medium text-gray-800 text-left`}
+                  } font-medium text-gray-800 text-left uppercase`}
                   {...getHeaderProps()}
                 >
                   {render('Header')}
@@ -69,10 +69,13 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
           {rows.map(row => {
             prepareRow(row)
             return (
-              <tr className="border-b border-gray-300" {...row.getRowProps()}>
+              <tr
+                className="border-b border-gray-300 hover:bg-gray-100"
+                {...row.getRowProps()}
+              >
                 {row.cells.map(({ column, getCellProps, render }) => (
                   <td
-                    className={`py-3 ${
+                    className={`h-14 ${
                       column.id === 'selectable' ? 'w-0 pl-3' : 'w-auto px-3'
                     }`}
                     {...getCellProps()}

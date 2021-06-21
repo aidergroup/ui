@@ -38,7 +38,7 @@ const Checkbox = ({
           <span className="block w-3.5 rounded bg-blue-500 h-3.5" />
         )}
         {_checked === 'indeterminate' && (
-          <span className="block w-2.5 rounded bg-gray-500 h-1" />
+          <span className="block w-2.5 rounded bg-gray-500 h-0.5" />
         )}
       </RadixCheckbox.Indicator>
     </RadixCheckbox.Root>
