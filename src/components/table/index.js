@@ -83,8 +83,13 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
 }
 
 Table.propTypes = {
-  columns: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.number)).isRequired,
-  data: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.number)).isRequired,
+  columns: PropTypes.arrayOf(PropTypes.shape({ Header: PropTypes.node }))
+    .isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    }),
+  ).isRequired,
   selectable: PropTypes.bool,
   onSelectedRowsChange: PropTypes.func,
 }
