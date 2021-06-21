@@ -18,12 +18,12 @@ const RichEditor = ({ editorState, onChange, error, actions, disabled }) => {
 
 	return (
 		<div
-			className={`border border-gray-400 rounded-lg w-full bg-white shadow-sm ${
+			className={`border border-gray-300 rounded-lg w-full overflow-hidden bg-white ${
 				disabled && 'cursor-not-allowed'
 			}`}
 		>
 			<div
-				className="py-4 px-4 overflow-scroll hover:bg-gray-200 hover:cursor-text transition-colors"
+				className="py-4 px-4 overflow-scroll hover:cursor-text"
 				onClick={focusEditor}
 			>
 				<Editor
@@ -33,12 +33,12 @@ const RichEditor = ({ editorState, onChange, error, actions, disabled }) => {
 					onChange={onChange}
 				/>
 				{!!error && (
-					<div className="px-3 py-1 bg-red-400 mt-2 text-white inline-block rounded text-sm font-medium">
+					<div className="px-3 py-1 bg-red mt-2 text-white inline-block rounded text-sm font-medium">
 						{error}
 					</div>
 				)}
 			</div>
-			<div className="px-3 flex py-2 justify-between items-center border-t border-gray-400">
+			<div className="px-3 flex py-2 justify-between items-center border-t border-gray-300">
 				<div className="flex">
 					<IconButton
 						type="button"

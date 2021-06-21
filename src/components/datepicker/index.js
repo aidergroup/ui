@@ -29,7 +29,7 @@ const Wrapper = styled.div`
       props.inline
         ? tw`border-none`
         : tw`border border-black border-opacity-10`}
-    ${tw`font-sans border w-full`}
+    ${tw`font-sans border`}
   }
 
   & .react-datepicker-wrapper {
@@ -37,7 +37,7 @@ const Wrapper = styled.div`
   }
 
   & .react-datepicker__header {
-    ${tw`bg-gray-300 border-b border-gray-400`};
+    ${tw`bg-gray-200 border-b border-gray-300`};
   }
 
   & .react-datepicker__current-month,
@@ -131,7 +131,7 @@ export const DatepickerInput = forwardRef(
             {tooltip && (
               <Tooltip.Root>
                 <Tooltip.Trigger>
-                  <div className="focus:outline-none focus:ring-2 hover:ring-1 ring-gray-600 transition-shadow h-4 w-4 rounded flex items-center justify-center bg-gray-400">
+                  <div className="focus:outline-none focus:ring-2 hover:ring-1 ring-gray-500 transition-shadow h-4 w-4 rounded flex items-center justify-center bg-gray-300">
                     <span className="text-gray-800 text-xs font-medium">?</span>
                   </div>
                 </Tooltip.Trigger>

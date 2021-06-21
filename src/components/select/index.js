@@ -12,15 +12,15 @@ import Loader from '../loader'
  */
 const styles = {
   control: (provided, state) => {
-    const classes = tw`duration-300 outline-none placeholder-gray-700 transition-shadow rounded-md border shadow-none border-gray-400 bg-white font-medium hover:border hover:border-gray-400 active:border ring-blue-500`
-    const focusStyles = tw`shadow-sm ring-2`
+    const classes = tw`duration-300 outline-none placeholder-gray-700 transition-shadow rounded-md border hover:border-gray-300 shadow-none border-gray-300 bg-white font-medium ring-blue-300`
+    const focusStyles = tw`ring-2 border-blue-500 hover:border-blue-500`
     return state.isFocused
       ? { ...provided, ...classes, ...focusStyles }
       : { ...provided, ...classes }
   },
   option: (_, state) => {
-    const defaultClasses = tw`rounded-lg px-2 py-1.5 rounded-md outline-none text-base font-medium transition-colors duration-200 text-black hover:bg-gray-200 focus:bg-gray-300 active:bg-gray-300`
-    const selectedClasses = tw`rounded-lg px-2 py-1.5 rounded-md outline-none text-base font-medium transition-colors duration-200 text-black focus:bg-gray-300 active:bg-gray-300 bg-gray-400`
+    const defaultClasses = tw`px-3 py-2 rounded-md outline-none text-sm font-medium text-black hover:bg-gray-200 focus:bg-gray-300`
+    const selectedClasses = tw`px-3 py-2 rounded-md outline-none text-sm font-medium text-black focus:bg-gray-200 bg-blue-500 text-white`
     return state.isSelected ? selectedClasses : defaultClasses
   },
   valueContainer: provided => {
@@ -28,7 +28,7 @@ const styles = {
     return { ...provided, ...classes }
   },
   menu: () =>
-    tw`border bg-white border-gray-400 shadow-sm rounded-lg px-1 absolute top-0 w-full mt-12 z-20`,
+    tw`border px-1 bg-white border-black border-opacity-10 shadow-sm rounded-lg absolute top-0 w-full mt-12 z-10`,
   placeholder: () => tw`text-base font-medium text-gray-800`,
   singleValue: () =>
     tw`text-base font-medium text-black whitespace-nowrap truncate`,
@@ -66,7 +66,6 @@ const Select = ({
   className,
   disabled,
   error,
-  light,
   ...props
 }) => {
   /**
@@ -90,16 +89,14 @@ const Select = ({
           <div className="flex items-center">
             <label
               htmlFor={id}
-              className={`block text-sm font-medium mr-1 ${
-                light ? 'text-white' : 'text-black'
-              }`}
+              className="block text-sm font-medium mr-1 text-black"
             >
               <span tw="inline-block">{label}</span>
             </label>
           </div>
         )}
         {typeof error === 'string' && (
-          <span tw="text-red-500 text-sm text-right font-medium">{error}</span>
+          <span tw="text-red text-sm text-right">{error}</span>
         )}
       </div>
       <ReactSelect
@@ -128,7 +125,6 @@ Select.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.string,
-  light: PropTypes.bool,
 }
 
 Select.defaultProps = {
@@ -136,7 +132,6 @@ Select.defaultProps = {
   className: '',
   disabled: false,
   error: '',
-  light: false,
 }
 
 export default Select
