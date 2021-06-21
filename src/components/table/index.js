@@ -43,7 +43,7 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
   }, [onSelectedRowsChange, selectedFlatRows])
 
   return (
-    <div className="border border-gray-300 rounded- overflow-hidden">
+    <div className="border border-gray-300 rounded-lg overflow-hidden">
       <table
         className="w-full"
         {...getTableProps()}
