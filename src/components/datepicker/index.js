@@ -146,7 +146,7 @@ export const DatepickerInput = forwardRef(
       </div>
       <button
         type="button"
-        className="focus:ring-2 w-full block ring-blue-500 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-300 bg-white font-medium px-4 py-2 transition-shadow"
+        className="focus:ring-2 focus:border-blue-500 focus:ring-blue-300 focus:outline-none w-full block placeholder-gray-700 rounded-lg border border-gray-300 bg-white font-medium px-4 py-2 transition-shadow"
         ref={ref}
         {...rest}
       >
