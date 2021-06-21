@@ -43,42 +43,59 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
   }, [onSelectedRowsChange, selectedFlatRows])
 
   return (
-    <table
-      className="w-full"
-      {...getTableProps()}
-      selected={selectedFlatRows.length}
-    >
-      <thead>
-        {headerGroups.map(({ getHeaderGroupProps, headers }) => (
-          <tr {...getHeaderGroupProps()}>
-            {headers.map(({ getHeaderProps, render }) => (
-              <th className="text-left" {...getHeaderProps()}>
-                {render('Header')}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map(row => {
-          prepareRow(row)
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map(({ getCellProps, render }) => (
-                <td className="border-b border-gray-300" {...getCellProps()}>
-                  {render('Cell')}
-                </td>
+    <div className="border border-gray-300 rounded-lg overflow-hidden">
+      <table
+        className="w-full"
+        {...getTableProps()}
+        selected={selectedFlatRows.length}
+      >
+        <thead className="bg-gray-200 border-b border-gray-300">
+          {headerGroups.map(({ getHeaderGroupProps, headers }) => (
+            <tr {...getHeaderGroupProps()}>
+              {headers.map(({ id, getHeaderProps, render }) => (
+                <th
+                  className={`py-2 text-sm ${
+                    id === 'selectable' ? 'w-0 pl-3' : 'w-auto px-3'
+                  } font-medium text-gray-800 text-left`}
+                  {...getHeaderProps()}
+                >
+                  {render('Header')}
+                </th>
               ))}
             </tr>
-          )
-        })}
-      </tbody>
-      <tfoot className="table-row-group">
-        <tr>
-          <td colSpan={visibleColumns.length}>{rows.length} resultat</td>
-        </tr>
-      </tfoot>
-    </table>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map(row => {
+            prepareRow(row)
+            return (
+              <tr className="border-b border-gray-300" {...row.getRowProps()}>
+                {row.cells.map(({ column, getCellProps, render }) => (
+                  <td
+                    className={`py-3 ${
+                      column.id === 'selectable' ? 'w-0 pl-3' : 'w-auto px-3'
+                    }`}
+                    {...getCellProps()}
+                  >
+                    {render('Cell')}
+                  </td>
+                ))}
+              </tr>
+            )
+          })}
+        </tbody>
+        <tfoot className="table-row-group">
+          <tr>
+            <td
+              className="px-3 py-3 font-medium"
+              colSpan={visibleColumns.length}
+            >
+              {rows.length} resultat
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   )
 }
 

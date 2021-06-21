@@ -8,7 +8,7 @@ const FilterButton = React.forwardRef((props, ref) => {
 
   return (
     <button
-      className="flex items-center space-x-2 rounded-lg focus:outline-none transition py-2 px-4 focus:ring-2 ring-blue-400 bg-white border border-gray-400 duration-300 disabled:bg-gray-300 disabled:shadow-none disabled:cursor-not-allowed"
+      className="flex items-center space-x-2 rounded-lg transition py-2 px-4 focus:ring-2 focus:border-blue-500 focus:ring-blue-300 focus:outline-none bg-white border border-gray-300 duration-300 disabled:bg-gray-300 disabled:border-none disabled:shadow-none disabled:cursor-not-allowed"
       type="button"
       style={{ width: '160px' }}
       ref={ref}
@@ -17,7 +17,7 @@ const FilterButton = React.forwardRef((props, ref) => {
       <span className="font-medium text-left text-black">{title}</span>
       <span
         className={`${
-          value ? 'text-black' : 'text-gray-700'
+          value ? 'text-black' : 'text-gray-600'
         } font-medium text-left text-black truncate flex-1`}
       >
         {value || 'Visa alla'}

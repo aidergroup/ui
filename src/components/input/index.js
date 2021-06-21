@@ -1,9 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import NumberFormat from 'react-number-format'
 
 import * as Tooltip from '../tooltip'
 
-const Input = ({ id, label, tooltip, error, className, ...props }) => (
+const INPUT_CLASSES =
+  'focus:ring-2 focus:border-blue-500 focus:ring-blue-300 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-300 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none'
+
+const Input = ({
+  id,
+  label,
+  tooltip,
+  error,
+  className,
+  type,
+  onChange,
+  ...props
+}) => (
   <div className={className}>
     <div className="flex items-center justify-between mb-2">
       {label && (
@@ -14,7 +27,7 @@ const Input = ({ id, label, tooltip, error, className, ...props }) => (
           {tooltip && (
             <Tooltip.Root>
               <Tooltip.Trigger>
-                <div className="focus:outline-none focus:ring-2 hover:ring-1 ring-gray-600 transition-shadow h-4 w-4 rounded flex items-center justify-center bg-gray-400">
+                <div className="focus:outline-none h-4 w-4 rounded flex items-center justify-center bg-gray-300">
                   <span className="text-gray-800 text-xs font-medium">?</span>
                 </div>
               </Tooltip.Trigger>
@@ -27,22 +40,33 @@ const Input = ({ id, label, tooltip, error, className, ...props }) => (
         </div>
       )}
       {typeof error === 'string' && (
-        <span className="text-red-500 text-sm text-right font-medium">
-          {error}
-        </span>
+        <span className="text-red text-sm text-right">{error}</span>
       )}
     </div>
-    <input
-      id={id}
-      className="focus:ring-2 ring-blue-500 focus:outline-none disabled:bg-gray-400 placeholder-gray-700 rounded-lg border border-gray-400 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none"
-      {...props}
-    />
+    {type === 'currency' ? (
+      <NumberFormat
+        id={id}
+        className={INPUT_CLASSES}
+        type="text"
+        onValueChange={onChange}
+        {...props}
+      />
+    ) : (
+      <input
+        id={id}
+        className={INPUT_CLASSES}
+        type={type}
+        onChange={onChange}
+        {...props}
+      />
+    )}
   </div>
 )
 
 Input.propTypes = {
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
   label: PropTypes.string,
   tooltip: PropTypes.string,
   error: PropTypes.string,

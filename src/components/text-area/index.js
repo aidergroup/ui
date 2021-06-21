@@ -14,7 +14,7 @@ const TextArea = ({ id, label, tooltip, error, className, ...props }) => (
           {tooltip && (
             <Tooltip.Root>
               <Tooltip.Trigger>
-                <div className="focus:outline-none focus:ring-2 hover:ring-1 ring-gray-600 transition-shadow h-4 w-4 rounded flex items-center justify-center bg-gray-400">
+                <div className="focus:outline-none h-4 w-4 rounded flex items-center justify-center bg-gray-300">
                   <span className="text-gray-800 text-xs font-medium">?</span>
                 </div>
               </Tooltip.Trigger>
@@ -27,14 +27,12 @@ const TextArea = ({ id, label, tooltip, error, className, ...props }) => (
         </div>
       )}
       {typeof error === 'string' && (
-        <span className="text-red-500 text-sm text-right font-medium">
-          {error}
-        </span>
+        <span className="text-red text-sm text-right">{error}</span>
       )}
     </div>
     <textarea
       id={id}
-      className="focus:ring-2 ring-blue-500 disabled:bg-gray-400 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-400 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none"
+      className="focus:ring-2 ring-blue-300 focus:border-blue-500 disabled:bg-gray-400 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-300 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none"
       {...props}
     />
   </div>
