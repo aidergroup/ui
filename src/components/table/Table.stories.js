@@ -13,10 +13,10 @@ const Template = args => (
 export const Default = Template.bind({})
 
 Default.args = {
-  data,
-  columns,
   selectable: true,
   onSelectedRowsChange: null,
+  data,
+  columns,
 }
 
 export default {

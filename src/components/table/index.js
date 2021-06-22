@@ -56,7 +56,6 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
             <Row
               selectable={selectable}
               selected={!!selectedFlatRows.length}
-              className="relative"
               {...getHeaderGroupProps()}
             >
               {headers.map(({ id, getHeaderProps, render }) => (
@@ -109,29 +108,29 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
 
 const Cell = styled.td`
   ${tw`h-14`}
-  ${props =>
-    props.isCheckbox
+  ${({ isCheckbox }) =>
+    isCheckbox
       ? tw`px-3 absolute h-full w-12 items-center flex opacity-0 duration-200 transition-opacity`
       : tw`w-auto px-3 duration-100 transition transform`}
 `
 
 const Row = styled.tr`
-  ${tw`border-b border-gray-300 hover:bg-gray-100 relative`}
+  ${tw`relative border-b border-gray-300 hover:bg-gray-100`}
 
   ${Cell}:nth-child(1) {
-    ${props => props.selected && tw`opacity-100`}
+    ${({ selected }) => selected && tw`opacity-100`}
   }
 
   ${Cell}:nth-child(2) {
-    ${props => props.selected && tw`translate-x-7`}
+    ${({ selected }) => selected && tw`translate-x-7`}
   }
 
   &:hover {
     ${Cell}:nth-child(1) {
-      ${props => props.selectable && tw`opacity-100`}
+      ${({ selectable }) => selectable && tw`opacity-100`}
     }
     ${Cell}:nth-child(2) {
-      ${props => props.selectable && tw`translate-x-7`}
+      ${({ selectable }) => selectable && tw`translate-x-7`}
     }
   }
 `
