@@ -15,7 +15,7 @@ export const Default = Template.bind({})
 Default.args = {
   data,
   columns,
-  selectable: false,
+  selectable: true,
   onSelectedRowsChange: null,
 }
 

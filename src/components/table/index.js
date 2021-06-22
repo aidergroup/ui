@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useTable, useRowSelect } from 'react-table'
+import tw, { styled } from 'twin.macro'
+
 import Checkbox from '../checkbox'
 
 const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
@@ -51,39 +53,37 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
       >
         <thead className="bg-gray-200 border-b border-gray-300">
           {headerGroups.map(({ getHeaderGroupProps, headers }) => (
-            <tr {...getHeaderGroupProps()}>
+            <Row
+              visible={selectedFlatRows.length}
+              className="relative"
+              {...getHeaderGroupProps()}
+            >
               {headers.map(({ id, getHeaderProps, render }) => (
-                <th
-                  className={`h-10 text-xs ${
-                    id === 'selectable' ? 'w-0 pl-3' : 'w-auto px-3'
-                  } font-medium text-gray-800 text-left uppercase`}
+                <Cell
+                  className="h-10 text-xs font-medium text-gray-800 text-left uppercase"
+                  selectable={id === 'selectable' && selectable}
                   {...getHeaderProps()}
                 >
                   {render('Header')}
-                </th>
+                </Cell>
               ))}
-            </tr>
+            </Row>
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
           {rows.map(row => {
             prepareRow(row)
             return (
-              <tr
-                className="border-b border-gray-300 hover:bg-gray-100"
-                {...row.getRowProps()}
-              >
+              <Row visible={selectedFlatRows.length} {...row.getRowProps()}>
                 {row.cells.map(({ column, getCellProps, render }) => (
-                  <td
-                    className={`h-14 ${
-                      column.id === 'selectable' ? 'w-0 pl-3' : 'w-auto px-3'
-                    }`}
+                  <Cell
+                    selectable={column.id === 'selectable' && selectable}
                     {...getCellProps()}
                   >
                     {render('Cell')}
-                  </td>
+                  </Cell>
                 ))}
-              </tr>
+              </Row>
             )
           })}
         </tbody>
@@ -101,6 +101,36 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
     </div>
   )
 }
+
+const Cell = styled.td`
+  ${tw`h-14`}
+
+  ${props =>
+    props.selectable
+      ? tw`px-3 absolute h-full w-12 items-center flex opacity-0 duration-200 transition-opacity`
+      : tw`w-auto px-3 duration-100 transition transform`}
+`
+
+const Row = styled.tr`
+  ${tw`border-b border-gray-300 hover:bg-gray-100 relative`}
+
+  ${Cell}:nth-child(1) {
+    ${props => props.visible && tw`opacity-100`}
+  }
+
+  ${Cell}:nth-child(2) {
+    ${props => props.visible && tw`translate-x-7`}
+  }
+
+  &:hover {
+    ${Cell}:nth-child(1) {
+      ${tw`opacity-100`}
+    }
+    ${Cell}:nth-child(2) {
+      ${tw`translate-x-7`}
+    }
+  }
+`
 
 Table.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.shape({ Header: PropTypes.node }))
