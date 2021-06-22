@@ -180,7 +180,6 @@ DatepickerInput.propTypes = {
   selectsRange: PropTypes.bool,
   startDate: PropTypes.instanceOf(Date),
   endDate: PropTypes.instanceOf(Date),
-  onClick: PropTypes.func.isRequired,
 }
 
 DatepickerInput.defaultProps = {
