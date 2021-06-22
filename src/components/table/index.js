@@ -49,19 +49,20 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
       <table
         className="w-full"
         {...getTableProps()}
-        selected={selectedFlatRows.length}
+        selected={!!selectedFlatRows.length}
       >
         <thead className="bg-gray-200 border-b border-gray-300">
           {headerGroups.map(({ getHeaderGroupProps, headers }) => (
             <Row
-              visible={selectedFlatRows.length}
+              selectable={selectable}
+              selected={!!selectedFlatRows.length}
               className="relative"
               {...getHeaderGroupProps()}
             >
               {headers.map(({ id, getHeaderProps, render }) => (
                 <Cell
                   className="h-10 text-xs font-medium text-gray-800 text-left uppercase"
-                  selectable={id === 'selectable' && selectable}
+                  isCheckbox={id === 'selectable' && selectable}
                   {...getHeaderProps()}
                 >
                   {render('Header')}
@@ -74,10 +75,14 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
           {rows.map(row => {
             prepareRow(row)
             return (
-              <Row visible={selectedFlatRows.length} {...row.getRowProps()}>
+              <Row
+                selectable={selectable}
+                selected={!!selectedFlatRows.length}
+                {...row.getRowProps()}
+              >
                 {row.cells.map(({ column, getCellProps, render }) => (
                   <Cell
-                    selectable={column.id === 'selectable' && selectable}
+                    isCheckbox={column.id === 'selectable' && selectable}
                     {...getCellProps()}
                   >
                     {render('Cell')}
@@ -104,9 +109,8 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
 
 const Cell = styled.td`
   ${tw`h-14`}
-
   ${props =>
-    props.selectable
+    props.isCheckbox
       ? tw`px-3 absolute h-full w-12 items-center flex opacity-0 duration-200 transition-opacity`
       : tw`w-auto px-3 duration-100 transition transform`}
 `
@@ -115,19 +119,19 @@ const Row = styled.tr`
   ${tw`border-b border-gray-300 hover:bg-gray-100 relative`}
 
   ${Cell}:nth-child(1) {
-    ${props => props.visible && tw`opacity-100`}
+    ${props => props.selected && tw`opacity-100`}
   }
 
   ${Cell}:nth-child(2) {
-    ${props => props.visible && tw`translate-x-7`}
+    ${props => props.selected && tw`translate-x-7`}
   }
 
   &:hover {
     ${Cell}:nth-child(1) {
-      ${tw`opacity-100`}
+      ${props => props.selectable && tw`opacity-100`}
     }
     ${Cell}:nth-child(2) {
-      ${tw`translate-x-7`}
+      ${props => props.selectable && tw`translate-x-7`}
     }
   }
 `
