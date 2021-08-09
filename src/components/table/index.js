@@ -110,7 +110,7 @@ const Cell = styled.td`
   ${tw`h-14`}
   ${({ isCheckbox }) =>
     isCheckbox
-      ? tw`px-3 absolute h-full w-12 items-center flex opacity-0 duration-200 transition-opacity`
+      ? tw`px-3 absolute w-12 items-center flex opacity-0 duration-200 transition-opacity`
       : tw`w-auto px-3 duration-100 transition transform`}
 `
 
