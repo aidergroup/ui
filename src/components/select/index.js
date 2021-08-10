@@ -84,8 +84,8 @@ const Select = ({
 
   return (
     <div className={className}>
-      <div className="flex items-center justify-between mb-2">
-        {typeof label === 'string' && (
+      {typeof label === 'string' && (
+        <div className="flex items-center justify-between mb-2">
           <div className="flex items-center">
             <label
               htmlFor={id}
@@ -94,11 +94,11 @@ const Select = ({
               <span tw="inline-block">{label}</span>
             </label>
           </div>
-        )}
-        {typeof error === 'string' && (
-          <span tw="text-red text-sm text-right">{error}</span>
-        )}
-      </div>
+          {typeof error === 'string' && (
+            <span tw="text-red text-sm text-right">{error}</span>
+          )}
+        </div>
+      )}
       <ReactSelect
         id={id}
         styles={styles}
