@@ -18,8 +18,8 @@ const Input = ({
   ...props
 }) => (
   <div className={className}>
-    <div className="flex items-center justify-between mb-2">
-      {label && (
+    {label && (
+      <div className="flex items-center justify-between mb-2">
         <div className="flex items-center">
           <label htmlFor={id} className="block text-sm font-medium mr-1">
             <span className="inline-block">{label}</span>
@@ -38,11 +38,11 @@ const Input = ({
             </Tooltip.Root>
           )}
         </div>
-      )}
-      {typeof error === 'string' && (
-        <span className="text-red text-sm text-right">{error}</span>
-      )}
-    </div>
+        {typeof error === 'string' && (
+          <span className="text-red text-sm text-right">{error}</span>
+        )}
+      </div>
+    )}
     {type === 'currency' ? (
       <NumberFormat
         id={id}
