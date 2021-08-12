@@ -43,6 +43,7 @@ module.exports = {
     textColor: ['active', 'hover', 'focus', 'disabled'],
     cursor: ['active', 'hover', 'focus', 'disabled'],
     ringWidth: ['hover', 'focus', 'active'],
+    borderWidth: ['last'],
   },
   plugins: [
     plugin(function ({ addUtilities }) {

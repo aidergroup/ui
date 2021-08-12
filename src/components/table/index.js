@@ -93,10 +93,7 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
         </tbody>
         <tfoot className="table-row-group">
           <tr>
-            <td
-              className="px-3 py-3 font-medium"
-              colSpan={visibleColumns.length}
-            >
+            <td className="p-3 font-medium" colSpan={visibleColumns.length}>
               {rows.length} resultat
             </td>
           </tr>
@@ -107,15 +104,15 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
 }
 
 const Cell = styled.td`
-  ${tw`h-14`}
+  ${tw`py-3`}
   ${({ isCheckbox }) =>
     isCheckbox
-      ? tw`px-3 absolute w-12 items-center flex opacity-0 duration-200 transition-opacity`
-      : tw`w-auto px-3 duration-100 transition transform`}
+      ? tw`px-3 absolute w-12 h-full items-center flex opacity-0`
+      : tw`relative w-auto px-3 transform`}
 `
 
 const Row = styled.tr`
-  ${tw`relative border-b border-gray-300 hover:bg-gray-100`}
+  ${tw`relative align-top border-b border-gray-300 hover:bg-gray-100`}
 
   ${Cell}:nth-child(1) {
     ${({ selected }) => selected && tw`opacity-100`}
