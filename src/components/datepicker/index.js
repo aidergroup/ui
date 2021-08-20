@@ -193,6 +193,7 @@ DatepickerInput.propTypes = {
   selectsRange: PropTypes.bool,
   startDate: PropTypes.instanceOf(Date),
   endDate: PropTypes.instanceOf(Date),
+  error: PropTypes.string,
 }
 
 DatepickerInput.defaultProps = {
@@ -202,6 +203,7 @@ DatepickerInput.defaultProps = {
   selectsRange: false,
   startDate: null,
   endDate: null,
+  error: null,
 }
 
 export default Datepicker
