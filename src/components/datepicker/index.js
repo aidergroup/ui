@@ -113,12 +113,22 @@ Datepicker.defaultProps = {
 
 export const DatepickerInput = forwardRef(
   (
-    { id, light, label, tooltip, selectsRange, startDate, endDate, ...rest },
+    {
+      id,
+      light,
+      label,
+      tooltip,
+      selectsRange,
+      startDate,
+      endDate,
+      error,
+      ...rest
+    },
     ref,
   ) => (
     <div>
-      <div className="flex items-center justify-between mb-2">
-        {label && (
+      {label && (
+        <div className="flex items-center justify-between mb-2">
           <div className="flex items-center">
             <label
               htmlFor={id}
@@ -142,8 +152,11 @@ export const DatepickerInput = forwardRef(
               </Tooltip.Root>
             )}
           </div>
-        )}
-      </div>
+          {typeof error === 'string' && (
+            <span className="text-red text-sm text-right">{error}</span>
+          )}
+        </div>
+      )}
       <button
         type="button"
         className="focus:ring-2 focus:border-blue-500 focus:ring-blue-300 focus:outline-none w-full block placeholder-gray-700 rounded-lg border border-gray-300 bg-white font-medium px-4 py-2 transition-shadow"
@@ -180,6 +193,7 @@ DatepickerInput.propTypes = {
   selectsRange: PropTypes.bool,
   startDate: PropTypes.instanceOf(Date),
   endDate: PropTypes.instanceOf(Date),
+  error: PropTypes.string,
 }
 
 DatepickerInput.defaultProps = {
@@ -189,6 +203,7 @@ DatepickerInput.defaultProps = {
   selectsRange: false,
   startDate: null,
   endDate: null,
+  error: null,
 }
 
 export default Datepicker
