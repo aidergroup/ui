@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid'
+
 const descriptions = [
   'Viaplay AB',
   'APOTEK HJARTAT K',
@@ -21,16 +23,20 @@ export const makeData = (length = 25) => {
 
   return Array(length)
     .fill({})
-    .map((item, index) => {
+    .map(() => {
       const amount = getAmount()
+      const duplicate = Math.random() < 0.5
+
       return {
-        id: index,
+        id: nanoid(),
         description:
           descriptions[Math.floor(Math.random() * descriptions.length)],
         amount,
         expense: amount < 0,
         verified: false,
         date: '2020-12-31',
+        duplicate,
+        defaultChecked: duplicate,
       }
     })
 }

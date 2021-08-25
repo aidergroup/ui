@@ -57,6 +57,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-watch": "^7.0.0",
     "husky": "^4.3.8",
+    "nanoid": "^3.1.25",
     "postcss": "^8.2.7",
     "postcss-loader": "^4.1.0",
     "rollup": "^2.38.5",

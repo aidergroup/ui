@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useTable, useRowSelect } from 'react-table'
 import tw, { styled } from 'twin.macro'
@@ -15,21 +15,44 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
     selectedFlatRows,
     setHiddenColumns,
     visibleColumns,
-  } = useTable({ columns, data }, useRowSelect, hooks =>
-    hooks.visibleColumns.push(cols => [
-      {
-        id: 'selectable',
-        Header: ({ getToggleAllRowsSelectedProps }) => {
-          const { onChange, ...props } = getToggleAllRowsSelectedProps()
-          return <Checkbox {...props} onCheckedChange={onChange} />
-        },
-        Cell: ({ row }) => {
-          const { onChange, ...props } = row.getToggleRowSelectedProps()
-          return <Checkbox {...props} onCheckedChange={onChange} />
-        },
+    state: { selectedRowIds },
+  } = useTable(
+    {
+      columns,
+      data,
+      initialState: {
+        // Update the initial state based on the passed data and check for 'defaultChecked' key.
+        // Passing selectedRow as prop itself will not rerender the table.
+        selectedRowIds: useMemo(
+          () =>
+            Array.isArray(data)
+              ? data.reduce((acc, { defaultChecked }, index) => {
+                  if (defaultChecked) {
+                    acc[index] = defaultChecked
+                  }
+                  return acc
+                }, {})
+              : {},
+          [data],
+        ),
       },
-      ...cols,
-    ]),
+    },
+    useRowSelect,
+    hooks =>
+      hooks.visibleColumns.push(cols => [
+        {
+          id: 'selectable',
+          Header: ({ getToggleAllRowsSelectedProps }) => {
+            const { onChange, ...props } = getToggleAllRowsSelectedProps()
+            return <Checkbox {...props} onCheckedChange={onChange} />
+          },
+          Cell: x => {
+            const { onChange, ...props } = x.row.getToggleRowSelectedProps()
+            return <Checkbox {...props} onCheckedChange={onChange} />
+          },
+        },
+        ...cols,
+      ]),
   )
 
   // Hide or show the select column
@@ -37,12 +60,12 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
     setHiddenColumns([!selectable && 'selectable'])
   }, [setHiddenColumns, selectable])
 
-  // Run onSelectedRowChange
+  // Callback for selected rows change
   useEffect(() => {
     if (typeof onSelectedRowsChange === 'function') {
-      onSelectedRowsChange(selectedFlatRows)
+      onSelectedRowsChange(selectedRowIds)
     }
-  }, [onSelectedRowsChange, selectedFlatRows])
+  }, [onSelectedRowsChange, selectedRowIds])
 
   return (
     <div className="border border-gray-300 rounded-lg overflow-hidden">
@@ -135,11 +158,6 @@ const Row = styled.tr`
 Table.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.shape({ Header: PropTypes.node }))
     .isRequired,
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    }),
-  ).isRequired,
   selectable: PropTypes.bool,
   onSelectedRowsChange: PropTypes.func,
 }
