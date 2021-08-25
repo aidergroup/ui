@@ -15,7 +15,6 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
     selectedFlatRows,
     setHiddenColumns,
     visibleColumns,
-    state: { selectedRowIds },
   } = useTable(
     {
       columns,
@@ -63,9 +62,9 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
   // Callback for selected rows change
   useEffect(() => {
     if (typeof onSelectedRowsChange === 'function') {
-      onSelectedRowsChange(selectedRowIds)
+      onSelectedRowsChange(selectedFlatRows)
     }
-  }, [onSelectedRowsChange, selectedRowIds])
+  }, [onSelectedRowsChange, selectedFlatRows])
 
   return (
     <div className="border border-gray-300 rounded-lg overflow-hidden">
