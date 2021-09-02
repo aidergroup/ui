@@ -63,6 +63,23 @@ const Input = ({
   </div>
 )
 
+/**
+ * A set of props to pass to our input with the type "currency" to format
+ * the text after Swedish financial standards
+ * @type {Object}
+ */
+export const FINANCIAL_DEFAULT_PROPS = {
+  type: 'currency',
+  autoComplete: 'off',
+  thousandSeparator: ' ',
+  decimalSeparator: ',',
+  decimalScale: 2,
+  suffix: ' kr',
+  // TODO: onChange is marked as required in prop types,
+  // but when the type is "currency" we pass onValueChange instead.
+  onChange: () => {},
+}
+
 Input.propTypes = {
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
