@@ -10,18 +10,11 @@ const useModal = ({ ...config } = {}) => {
   const modal = useRef()
 
   const { isOpen, togglePortal, openPortal, closePortal, Portal } = usePortal({
-    onPortalClick({ target }) {
-      const clickingOutsideModal =
-        modal && modal.current && !modal.current.contains(target)
-      if (clickingOutsideModal) {
-        closePortal()
-      }
-    },
     ...config,
   })
 
   const Modal = useCallback(
-    ({ visible, onClose, ...props }) => (
+    ({ visible, onClose, closeOnClickOutside = true, ...props }) => (
       <Portal>
         <AnimatePresence onExitComplete={onClose}>
           {visible && (
@@ -44,6 +37,7 @@ const useModal = ({ ...config } = {}) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ opacity: { duration: 0.2 } }}
+                onClick={() => closeOnClickOutside && closePortal()}
               />
             </Container>
           )}
