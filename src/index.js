@@ -20,6 +20,7 @@ export { default as RichEditor } from './components/rich-editor'
 export { default as Table } from './components/table'
 
 export * as Dropdown from './components/dropdown'
+export * as RadioGroup from './components/radio-group'
 export * as Tooltip from './components/tooltip'
 
 // Hooks
