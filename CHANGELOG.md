@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/aidergroup/ui/compare/v0.7.0...v0.7.1) (2022-01-04)
+Add support to pass option closeOnClickOutside to useModal.
+
 ## [0.7.0](https://github.com/aidergroup/ui/compare/v0.6.5...v0.7.0) (2021-11-23)
 
 ### [0.6.5](https://github.com/aidergroup/ui/compare/v0.6.4...v0.6.5) (2021-09-08)
