@@ -8,13 +8,14 @@ const NULL_EVENT = { currentTarget: { contains: () => false } }
 
 const useModal = ({ ...config } = {}) => {
   const modal = useRef()
+  const closeOnClickOutside = config.closeOnClickOutside ?? true
 
   const { isOpen, togglePortal, openPortal, closePortal, Portal } = usePortal({
     ...config,
   })
 
   const Modal = useCallback(
-    ({ visible, onClose, closeOnClickOutside = true, ...props }) => (
+    ({ visible, onClose, ...props }) => (
       <Portal>
         <AnimatePresence onExitComplete={onClose}>
           {visible && (
