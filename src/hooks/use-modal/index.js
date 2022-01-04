@@ -45,7 +45,7 @@ const useModal = ({ ...config } = {}) => {
         </AnimatePresence>
       </Portal>
     ),
-    [closePortal],
+    [closePortal, closeOnClickOutside],
   )
 
   return Object.assign([openPortal, closePortal, isOpen, Modal, togglePortal], {
