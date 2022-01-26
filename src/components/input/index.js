@@ -5,7 +5,7 @@ import NumberFormat from 'react-number-format'
 import * as Tooltip from '../tooltip'
 
 const INPUT_CLASSES =
-  'focus:ring-2 focus:border-blue-500 focus:ring-blue-300 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-300 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none'
+  'focus:ring-2 focus:border-blue-500 focus:ring-blue-300 focus:outline-none placeholder-gray-700 rounded-lg border border-gray-300 bg-white font-medium px-4 py-2 transition-shadow w-full appearance-none disabled:bg-gray-200'
 
 const Input = ({
   id,
