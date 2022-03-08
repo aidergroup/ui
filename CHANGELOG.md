@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.4](https://github.com/aidergroup/ui/compare/v0.7.3...v0.7.4) (2022-03-08)
+
+
+### Bug Fixes
+
+* **Table:** `onRowClick` is not triggered when using the checkbox to select a row ([42e4a4f](https://github.com/aidergroup/ui/commit/42e4a4fab54950324b18a34435a45911f5e7fdc7))
+
 ### [0.7.3](https://github.com/aidergroup/ui/compare/v0.7.2...v0.7.3) (2022-03-08)
 
 
