@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.3](https://github.com/aidergroup/ui/compare/v0.7.2...v0.7.3) (2022-03-08)
+
+
+### Features
+
+* Adds `onRowClick` to Table component ([21de8ac](https://github.com/aidergroup/ui/commit/21de8acd6e3c31eeefb71e2e617e27e75b37aad5))
+
 ### [0.7.2](https://github.com/aidergroup/ui/compare/v0.7.1...v0.7.2) (2022-01-26)
 
 ### [0.7.1](https://github.com/aidergroup/ui/compare/v0.7.0...v0.7.1) (2022-01-04)
