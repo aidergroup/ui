@@ -5,7 +5,7 @@ import tw, { styled } from 'twin.macro'
 
 import Checkbox from '../checkbox'
 
-const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
+const Table = ({ columns, data, selectable, onSelectedRowsChange, onRowClick }) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -100,6 +100,12 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange }) => {
                 selectable={selectable}
                 selected={!!selectedFlatRows.length}
                 {...row.getRowProps()}
+                onClick={() => {
+                    if (typeof onRowClick === 'function') {
+                        onRowClick(row.values.node.id)
+                    }
+                }}
+                className={typeof onRowClick === 'function' ? 'cursor-pointer' : ''}
               >
                 {row.cells.map(({ column, getCellProps, render }) => (
                   <Cell
