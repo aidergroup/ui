@@ -67,7 +67,7 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange, onRowClick }) 
   }, [onSelectedRowsChange, selectedFlatRows])
 
   return (
-    <div className="border border-gray-300 rounded-lg overflow-hidden">
+    <div className="overflow-hidden border border-gray-300 rounded-lg">
       <table
         className="w-full"
         {...getTableProps()}
@@ -82,7 +82,7 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange, onRowClick }) 
             >
               {headers.map(({ id, getHeaderProps, render }) => (
                 <Cell
-                  className="h-10 text-xs font-medium text-gray-800 text-left uppercase"
+                  className="h-10 text-xs font-medium text-left text-gray-800 uppercase"
                   isCheckbox={id === 'selectable' && selectable}
                   {...getHeaderProps()}
                 >
@@ -135,7 +135,7 @@ const Cell = styled.td`
   ${tw`py-3`}
   ${({ isCheckbox }) =>
     isCheckbox
-      ? tw`px-3 absolute w-12 h-full items-center flex opacity-0`
+      ? tw`absolute flex items-center w-12 h-full px-3 opacity-0`
       : tw`relative w-auto px-3 transform`}
 `
 
