@@ -2,13 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [0.8.0](https://github.com/aidergroup/ui/compare/v0.7.5...v0.8.0) (2022-03-24)
-
-
-### Features
-
-* Adds selectCreatable component ([3b3d0a0](https://github.com/aidergroup/ui/commit/3b3d0a034cb9b4b9e993842375c14663abe900ff))
-
 ### [0.7.5](https://github.com/aidergroup/ui/compare/v0.7.4...v0.7.5) (2022-03-23)
 
 ### [0.7.4](https://github.com/aidergroup/ui/compare/v0.7.3...v0.7.4) (2022-03-08)
