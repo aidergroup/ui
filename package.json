@@ -1,6 +1,6 @@
 {
   "name": "@aider/ui",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "author": "Aider <info@aider.nu> (https://aider.nu)",
   "repository": "https://github.com/aidergroup/ui",
   "main": "dist/components.js",
