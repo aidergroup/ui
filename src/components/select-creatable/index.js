@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import CreatableSelect from 'react-select/creatable'
 import { components } from 'react-select'
 import PropTypes from 'prop-types'
@@ -14,14 +14,18 @@ import Loader from '../loader'
 const styles = {
   control: (provided, state) => {
     const classes = tw`duration-300 outline-none placeholder-gray-700 transition-shadow rounded-md border hover:border-gray-300 shadow-none border-gray-300 bg-white font-medium ring-blue-300`
+    const disabledStyles = tw`bg-gray-200`
     const focusStyles = tw`ring-2 border-blue-500 hover:border-blue-500`
+    if (state.isDisabled) {
+      return { ...provided, ...classes, ...disabledStyles }
+    }
     return state.isFocused
       ? { ...provided, ...classes, ...focusStyles }
       : { ...provided, ...classes }
   },
   option: (_, state) => {
     const defaultClasses = tw`px-3 py-2 rounded-md outline-none text-sm font-medium text-black hover:bg-gray-200 focus:bg-gray-300`
-    const selectedClasses = tw`px-3 py-2 rounded-md outline-none text-sm font-medium text-black focus:bg-gray-200 bg-blue-500 text-white`
+    const selectedClasses = tw`px-3 py-2 rounded-md outline-none text-sm font-medium text-black focus:bg-gray-200`
     return state.isSelected ? selectedClasses : defaultClasses
   },
   valueContainer: provided => {
@@ -32,7 +36,7 @@ const styles = {
     tw`border px-1 bg-white border-black border-opacity-10 shadow-sm rounded-lg absolute top-0 w-full mt-12 z-10`,
   placeholder: () => tw`text-base font-medium text-gray-800`,
   singleValue: () =>
-    tw`text-base font-medium whitespace-nowrap truncate bg-blue-500 text-white rounded px-2`,
+    tw`text-xs font-medium whitespace-nowrap truncate bg-blue-500 text-white rounded pt-1 pr-2 pb-1 pl-2`,
   noOptionsMessage: () => tw`font-medium text-gray-800 p-2 text-center`,
   loadingMessage: () => tw`px-2 py-6 flex items-center justify-center`,
 }
@@ -49,7 +53,7 @@ const IndicatorSeparator = () => null
 
 const NoOptionsMessage = props => (
   <components.NoOptionsMessage {...props}>
-    Det finns inget att välja
+    Välj eller skriv för att skapa
   </components.NoOptionsMessage>
 )
 
@@ -62,61 +66,48 @@ const LoadingMessage = props => (
 const SelectCreatable = ({
   id,
   name,
-  onChange,
   label,
   className,
   disabled,
   error,
+  placeholder,
+  disabledPlaceholder,
   ...props
-}) => {
-  /**
-   * react-select does not return a native event, so we have to mock an
-   * event object and patch the onChange function.
-   *
-   * @see https://github.com/JedWatson/react-select/issues/667#issuecomment-583151752
-   * @see https://github.com/JedWatson/react-select/issues/1631#issuecomment-555986192
-   */
-  const _onChange = useCallback(
-    value => {
-      onChange({ currentTarget: { value, name } })
-    },
-    [onChange, name],
-  )
-
-  return (
-    <div className={className}>
-      {label && (
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center">
-            <label
-              htmlFor={id}
-              className="block text-sm font-medium mr-1 text-black"
-            >
-              <span tw="inline-block">{label}</span>
-            </label>
-          </div>
-          {typeof error === 'string' && (
-            <span tw="text-red text-sm text-right">{error}</span>
-          )}
+}) => (
+  <div className={className}>
+    {label && (
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center">
+          <label
+            htmlFor={id}
+            className="block text-sm font-medium mr-1 text-black"
+          >
+            <span tw="inline-block">{label}</span>
+          </label>
         </div>
-      )}
-      <CreatableSelect
-        id={id}
-        styles={styles}
-        onChange={_onChange}
-        name={name}
-        isDisabled={disabled}
-        components={{
-          DropdownIndicator,
-          IndicatorSeparator,
-          NoOptionsMessage,
-          LoadingMessage,
-        }}
-        {...props}
-      />
-    </div>
-  )
-}
+        {typeof error === 'string' && (
+          <span tw="text-red text-sm text-right">{error}</span>
+        )}
+      </div>
+    )}
+    <CreatableSelect
+      id={id}
+      styles={styles}
+      name={name}
+      isDisabled={disabled}
+      components={{
+        DropdownIndicator,
+        IndicatorSeparator,
+        NoOptionsMessage,
+        LoadingMessage,
+      }}
+      placeholder={
+        disabled && disabledPlaceholder ? disabledPlaceholder : placeholder
+      }
+      {...props}
+    />
+  </div>
+)
 
 SelectCreatable.propTypes = {
   id: PropTypes.string.isRequired,
