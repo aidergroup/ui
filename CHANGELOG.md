@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.7](https://github.com/aidergroup/ui/compare/v0.7.6...v0.7.7) (2022-03-25)
+
+
+### Bug Fixes
+
+* **SelectCreatable:** add correct styles ([d2bd601](https://github.com/aidergroup/ui/commit/d2bd601681dd67fa35173d3a6eab6351a8016cbc))
+
 ### [0.7.6](https://github.com/aidergroup/ui/compare/v0.8.0...v0.7.6) (2022-03-24)
 
 ### [0.7.5](https://github.com/aidergroup/ui/compare/v0.7.4...v0.7.5) (2022-03-23)
