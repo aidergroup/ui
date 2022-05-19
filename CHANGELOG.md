@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/aidergroup/ui/compare/v0.7.7...v0.8.0) (2022-05-19)
+
+
+### Features
+
+* Improves the Rich Text Editor ([0a5bfb3](https://github.com/aidergroup/ui/commit/0a5bfb35bfe758ebf9f2eee1fd1ccb7432492a4b))
+
+
+### Bug Fixes
+
+* Improves layout of rich text editor ([d7f29b1](https://github.com/aidergroup/ui/commit/d7f29b14f7f3424ae058916f16d0782802270497))
+
 ### [0.7.7](https://github.com/aidergroup/ui/compare/v0.7.6...v0.7.7) (2022-03-25)
 
 
