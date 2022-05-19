@@ -18,13 +18,13 @@ import tw, { styled } from 'twin.macro'
 import Icon from '../icon'
 
 const Content = styled(RadixContent)`
-  ${tw`border bg-white border-black border-opacity-10 shadow-sm rounded-lg overflow-hidden`}
+  ${tw`overflow-hidden bg-white border border-black rounded-lg shadow-sm border-opacity-10`}
 `
 const Label = styled(RadixLabel)`
-  ${tw`text-xs px-2 mt-1 text-gray-800`}
+  ${tw`px-2 mt-1 text-xs text-gray-800`}
 `
 const Item = styled(RadixItem)`
-  ${tw`flex w-full items-center text-sm font-medium px-3 py-2.5 outline-none hover:bg-gray-300`}
+  ${tw`flex w-full items-center text-sm font-medium px-3 py-2.5 outline-none hover:bg-gray-300 cursor-pointer`}
 `
 
 const CheckboxItem = styled(RadixCheckboxItem)`
@@ -44,7 +44,7 @@ const RadioItem = styled(RadixRadioItem)`
   ${tw`flex items-center px-3 py-2.5 text-sm font-medium outline-none hover:bg-gray-300`}
 `
 const Separator = styled(RadixSeparator)`
-  ${tw`h-px flex mx-2 bg-gray-400`}
+  ${tw`flex h-px mx-2 bg-gray-400`}
 `
 
 export {
