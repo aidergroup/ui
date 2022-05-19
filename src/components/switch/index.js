@@ -30,15 +30,15 @@ const Switch = ({
 )
 
 const Root = styled(RadixSwitch.Root)`
-  ${tw`appearance-none bg-transparent focus:outline-none border-none p-0 w-10 transition-colors duration-300 h-5 bg-gray-500 relative rounded-full`}
+  ${tw`relative inline-flex flex-shrink-0 h-6 transition-colors duration-200 ease-in-out bg-gray-300 border-2 border-transparent rounded-full cursor-pointer w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
   &[data-state='checked'] {
     ${tw`bg-blue-500`}
   }
 `
 const Thumb = styled(RadixSwitch.Thumb)`
-  ${tw`block w-5 h-5 bg-white rounded-full shadow-sm border border-gray-400 transition-transform duration-300 transform translate-x-0`}
+  ${tw`inline-block w-5 h-5 transition duration-200 ease-in-out transform translate-x-0 bg-white rounded-full shadow pointer-events-none ring-0`}
   &[data-state='checked'] {
-    ${tw`translate-x-full`}
+    ${tw`translate-x-5`}
   }
 `
 
