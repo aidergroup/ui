@@ -54,7 +54,7 @@ const RichEditor = ({ editorState, onChange, error, actions, disabled }) => {
           </div>
         )}
       </div>
-      <div className="flex items-center justify-between px-3 py-2 border-t border-gray-300">
+      <div className="flex items-center justify-between px-3 py-1 border-t border-gray-300">
         <div className="flex">
           <IconButton
             type="button"
