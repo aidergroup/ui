@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.3](https://github.com/aidergroup/ui/compare/v0.8.2...v0.8.3) (2022-05-19)
+
+
+### Features
+
+* **RichEditor:** Sets max-height and scroll ([d737a40](https://github.com/aidergroup/ui/commit/d737a4076efe1f68bcd70f1d92b8161415a3ad14))
+
+
+### Bug Fixes
+
+* **Dropdown:** Adds cursor-pointer on to Item ([b2adb42](https://github.com/aidergroup/ui/commit/b2adb42b377695129ce7c0b1140e144bb605f6dd))
+
 ### [0.8.2](https://github.com/aidergroup/ui/compare/v0.8.1...v0.8.2) (2022-05-19)
 
 
