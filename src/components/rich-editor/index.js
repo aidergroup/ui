@@ -5,7 +5,6 @@ import 'draft-js/dist/Draft.css'
 
 import Icon from '../icon'
 import IconButton from '../icon-button'
-import Button from '../button'
 
 const RichEditor = ({ editorState, onChange, error, actions, disabled }) => {
   const editor = useRef(null)
