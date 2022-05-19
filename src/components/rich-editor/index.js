@@ -38,6 +38,7 @@ const RichEditor = ({ editorState, onChange, error, actions, disabled }) => {
     >
       <div
         className="px-4 py-4 overflow-scroll hover:cursor-text"
+        style={{ maxHeight: 500 }}
         onClick={focusEditor}
       >
         <Editor
