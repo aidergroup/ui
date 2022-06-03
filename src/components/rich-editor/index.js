@@ -59,21 +59,18 @@ const RichEditor = ({ editorState, onChange, error, actions, disabled }) => {
           <IconButton
             type="button"
             disabled={disabled}
-            tertiary
             icon={<Icon name="bold" className="w-3 h-3 text-black" />}
             onClick={() => applyStyle('BOLD')}
           />
           <IconButton
             type="button"
             disabled={disabled}
-            tertiary
             icon={<Icon name="italic" className="w-3 h-3 text-black" />}
             onClick={() => applyStyle('ITALIC')}
           />
           <IconButton
             type="button"
             disabled={disabled}
-            tertiary
             icon={<Icon name="list-bulleted" className="w-3 h-3 text-black" />}
             onClick={() => toggleBlockType('unordered-list-item')}
           />
