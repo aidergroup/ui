@@ -6,7 +6,15 @@ import 'draft-js/dist/Draft.css'
 import Icon from '../icon'
 import IconButton from '../icon-button'
 
-const RichEditor = ({ editorState, onChange, error, actions, disabled }) => {
+const RichEditor = ({
+  editorState,
+  onChange,
+  error,
+  actions,
+  disabled,
+  handlePastedText,
+  stripPastedStyles,
+}) => {
   const editor = useRef(null)
 
   function focusEditor() {
@@ -45,6 +53,8 @@ const RichEditor = ({ editorState, onChange, error, actions, disabled }) => {
           ref={editor}
           readOnly={disabled}
           editorState={editorState}
+          handlePastedText={handlePastedText}
+          stripPastedStyles={stripPastedStyles}
           onChange={onChange}
           blockStyleFn={getBlockStyle}
         />
