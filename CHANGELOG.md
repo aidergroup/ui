@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.4](https://github.com/aidergroup/ui/compare/v0.8.3...v0.8.4) (2022-06-10)
+
+
+### Features
+
+* **RichEditor:** Adds support for `handlePastedText` and `stripPastedStyles` props ([2b707cf](https://github.com/aidergroup/ui/commit/2b707cf07756eeb69c95861c86b9dcda388c47fe))
+
+
+### Bug Fixes
+
+* **RichEditor:** Remove  from RichEditor buttons to silence console error ([2a5123d](https://github.com/aidergroup/ui/commit/2a5123d489974622c2c46bde6ffe80e8e8a60a91))
+
 ### [0.8.3](https://github.com/aidergroup/ui/compare/v0.8.2...v0.8.3) (2022-05-19)
 
 
