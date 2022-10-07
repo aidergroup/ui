@@ -14,6 +14,7 @@ const RichEditor = ({
   disabled,
   handlePastedText,
   stripPastedStyles,
+  maxHeight,
 }) => {
   const editor = useRef(null)
 
@@ -46,7 +47,7 @@ const RichEditor = ({
     >
       <div
         className="px-4 py-4 overflow-scroll hover:cursor-text"
-        style={{ maxHeight: 500 }}
+        style={{ maxHeight: maxHeight ?? 500 }}
         onClick={focusEditor}
       >
         <Editor
