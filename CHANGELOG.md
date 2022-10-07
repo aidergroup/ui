@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/aidergroup/ui/compare/v0.8.4...v0.9.0) (2022-10-07)
+
+
+### Features
+
+* Adds dynamic max height to editor ([c721e82](https://github.com/aidergroup/ui/commit/c721e825fcc8624eac3c936602751118877469d0))
+
 ### [0.8.4](https://github.com/aidergroup/ui/compare/v0.8.3...v0.8.4) (2022-06-10)
 
 
