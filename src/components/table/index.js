@@ -100,16 +100,21 @@ const Table = ({ columns, data, selectable, onSelectedRowsChange, onRowClick }) 
                 selectable={selectable}
                 selected={!!selectedFlatRows.length}
                 {...row.getRowProps()}
-                className={typeof onRowClick === 'function' ? 'cursor-pointer' : ''}
+                className={
+                  typeof onRowClick === 'function' ? 'cursor-pointer' : ''
+                }
               >
                 {row.cells.map(({ column, getCellProps, render }) => (
                   <Cell
                     isCheckbox={column.id === 'selectable' && selectable}
                     {...getCellProps()}
                     onClick={() => {
-                        if (typeof onRowClick === 'function' && column.id !== 'selectable') {
-                            onRowClick(row.values.node.id)
-                        }
+                      if (
+                        typeof onRowClick === 'function' &&
+                        column.id !== 'selectable'
+                      ) {
+                        onRowClick(row.values.node.id)
+                      }
                     }}
                   >
                     {render('Cell')}

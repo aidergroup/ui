@@ -60,9 +60,7 @@ const RichEditor = ({
           blockStyleFn={getBlockStyle}
         />
         {!!error && (
-          <div className="inline-block px-3 py-1 mt-2 text-sm font-medium text-white rounded bg-red">
-            {error}
-          </div>
+          <div className="inline-block px-3 py-1 mt-2 text-sm font-medium text-white rounded bg-red">{error}</div>
         )}
       </div>
       <div className="flex items-center justify-between px-3 py-1 border-t border-gray-300">
